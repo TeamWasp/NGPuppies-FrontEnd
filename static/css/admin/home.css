@@ -1,3 +1,7 @@
 #admin .h1 {
     color: yellow;
 }
+
+#personalDetailsForm, #clients-table-container, #admins-table-container, #allUsersMenu, #subscribersMenu, #billsMenu, #servicesMenu {
+    display: none;
+}
