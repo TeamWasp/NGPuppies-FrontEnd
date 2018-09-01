@@ -15,12 +15,12 @@
     <!-- Custom styles for this template -->
     <link href="../static/css/admin/home.css" rel="stylesheet">
 
-    <title>NG Puppies - Log in</title>
+    <title>NG Puppies - Admin home page</title>
 </head>
 
 <body id="admin">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <h1 class="navbar-brand mb-0 h1"><span>NG</span> Puppies - Admin Module</h1>
+        <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Admin Module</h1>
         <!-- Button to collapses the navbar when resizing website -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,8 @@
         <!-- Navigation bar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="menu" class="navbar-nav mr-auto">
-                <li id="homeLink" class="nav-item active">
-                    <a class="nav-link btn btn-sm m-1 btn-primary" href="http://localhost:8081/admin/personal">Personal Details <span class="sr-only"></span></a>
+                <li class="nav-item active">
+                    <button id="personalDetails" class="btn m-1 btn-primary">Personal Details <span class="sr-only"></span></button>
                 </li>
                 <!-- Dropdown menu: Clients -->
                 <li id="ClientsDropdown" class="nav-item">
@@ -38,7 +38,7 @@
                             Clients
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="http://localhost:8081/admin/clients/createClient">Create client</a>
+                            <a id="createClient" class="dropdown-item" href="clientsModule/createClient.html">Create client</a>
                             <a class="dropdown-item" href="http://localhost:8081/admin/clients/updateClient">Update client</a>
                             <a class="dropdown-item" href="http://localhost:8081/admin/clients/">List clients</a>
                             <div class="dropdown-divider"></div>
@@ -122,16 +122,21 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li id="logoutLink">
-                    <a class="btn btn-md m1 btn-danger" href="http://localhost:8081/logout" onclick="$('#form').submit();">
+                <li class="nav-item">
+                    <button id="logoutButton" class="btn btn-md m-1 btn-danger">
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <button id="test" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+    <!-- <button id="test" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button> -->
+    <!-- <div id="components" class="container">
+    </div> -->
+    <div id='content'>
+        <p>ddd</p>
+    </div>
 
     <div id="footer" class="container marketing fixed-bottom">
         <div>

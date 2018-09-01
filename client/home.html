@@ -1,12 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Client</title>
-</head>
-<body>
-<h1>Client Portal</h1>
+    <!-- Required meta tags -->
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Final java project called NG Puppies assigned by Bright Consulting as part of Telerik-Alpha with Java">
+    <meta name="keywords" content="java, Telerik-Alpha, banking, telecom">
+    <meta name="author" content="TeamWasp(Boris Zhelev and Vladimir Georgiev)">
 
-<p>Hello to the client portal!</p>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/client/home.css" rel="stylesheet">
+
+    <title>NG Puppies - Client home page</title>
+</head>
+
+<body id="client">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-brand mb-0 h1"><span>NG</span> Puppies - Client Module</h1>
+        <!-- Button to collapses the navbar when resizing website -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation bar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul id="menu" class="navbar-nav mr-auto">
+                <!-- <li id="homeLink" class="nav-item active">
+                    <a class="nav-link btn btn-sm m-1 btn-primary" href="http://localhost:8081/admin/personal">Personal Details <span class="sr-only"></span></a>
+                </li> -->
+                <!-- Dropdown menu: Subscribers -->
+                <li id="SubscribersDropdown" class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary m-1 dropdown-toggle" type="button" id="dropdownMenuButtonSubscribers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Subscribers
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="http://localhost:8081/client/subs">List all subscribers</a>
+                            <a class="dropdown-item" href="http://localhost:8081/client/top">List top 10 subscribers</a>
+                        </div>
+                    </div>
+                </li>
+                <!-- Dropdown menu: Bills -->
+                <li id="BillsDropdown" class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary m-1 dropdown-toggle" type="button" id="dropdownMenuButtonBills" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bills
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="http://localhost:8081/clients/bills/unpaid">List unpaid bills</a>
+                            <a class="dropdown-item" href="http://localhost:8081/admin/bills/history">List paid bills</a>
+                            <a class="dropdown-item" href="http://localhost:8081/client/bills/">List all bills</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="http://localhost:8081/client/pay">Pay bills</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- Logout button -->
+            <ul class="nav navbar-nav navbar-right">
+                <li id="logoutLink" class="nav-item">
+                    <a class="btn btn-md m-1 btn-danger" href="http://localhost:8081/logout" onclick="$('#form').submit();">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <button id="test" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button> -->
+    <div id="components">
+
+    </div>
+    <div id="footer" class="container marketing fixed-bottom">
+        <div>
+            <div>
+                Logged user: <span id="printUsername">Username</span>
+                Role: <span id="printRole">Role</span>
+            </div>
+            <!-- Footer -->
+            <footer>
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2018 NGPuppies</p>
+            </footer>
+        </div>
+    </div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/imsky/holder/master/holder.js"></script>
+<script src="../static/js/client/home.js"></script>
 </body>
 </html>
