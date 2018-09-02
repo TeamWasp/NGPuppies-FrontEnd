@@ -108,7 +108,6 @@ $(document).ready(function() {
 
                   $.each(data, function (i) {
                     var index = i + 1;
-                    var str = '<tr><td>' + index + '</td><td>' + data[i].username + '</td><td>' + data[i].role.name + '</td><td>' + data[i].eik + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
                     usersTable.row.add([
                         index, 
                         data[i].username, 
