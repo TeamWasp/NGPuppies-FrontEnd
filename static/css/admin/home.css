@@ -5,3 +5,8 @@
 #personalDetailsForm, #clients-table-container, #admins-table-container, #allUsersMenu, #subscribersMenu, #billsMenu, #servicesMenu {
     display: none;
 }
+
+table {
+    data-order: '[[ 1, "asc" ]]';
+    data-page-length: '2';
+}

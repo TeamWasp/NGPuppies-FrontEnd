@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
+  /* DataTables https://datatables.net/manual/installation */
+  $('table').DataTable();
+  /* $('table').DataTable( {
+    select: true
+  }); */
+
   $.ajaxSetup({
     beforeSend: function(xhr) {
-        xhr.setRequestHeader('Authorization', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbmlzdHJhdG9yIiwic2NvcGVzIjpbIlJPTEVfQURNSU4iXSwiaXNzIjoiaHR0cDovL2RldmdsYW4uY29tIiwiaWF0IjoxNTM1ODI4NzE2LCJleHAiOjE1MzU4NDY3MTZ9.2fvxoE5re70-iCtuTZk7WGI-d8d5lZWHVGCJTEVfR8M');
+        xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
     }
   });
 
@@ -33,36 +39,63 @@ $(document).ready(function() {
     $("#clients-table-container").show();
 
     $("#clients-table-rows").empty();
-      var invoices = $.ajax({
+      $.ajax({
+         // crossOrigin: true,
+         // crossDomain: true,
           type: 'GET',
+          xhrFields: { withCredentials: false },
           url: "http://localhost:8080/api/admin/clients/",
           contentType: "application/json",
+          dataType: "json",
           success: function (data) {
-              var tbody = $("#clients-table-rows"),
-                  props = ["username", "password", "EIK"];
-              $.each(data, function (i, data) {
-                  var tr = $('<tr>');
-                  $('<input' + " value=" + data["userId"] + ' type="checkbox" class="form-check-input" checked="checked">').appendTo(tr);
-                  $.each(props, function (i, prop) {
-                      $('<td>').html(data[prop]).appendTo(tr);
+              //alert(data);
+              var tbody = $("#clients-table-rows");
+
+                  $.each(data, function (i) {
+                    var index = i + 1;
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].eik + '</td></tr>';
+                    $('#clients-table-rows').append(str);
                   });
-              });
           },
           error: function () {
               console.log("Unsuccessful request");
           }
-      })
+      });
   });
 
   $("#adminsButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
+    /* $("#personalDetailsForm").hide();
     $('#clients-table-container').hide();
     $('#all-users-table-container').hide();
     $('#subscribers-table-container').hide();
     $('#bills-table-container').hide();
-    $('#services-table-container').hide();
+    $('#services-table-container').hide(); */
+    $('.container')filter().hide();
     $('#admins-table-container').show();
+
+    $("#admins-table-rows").empty();
+      $.ajax({
+         // crossOrigin: true,
+         // crossDomain: true,
+          type: 'GET',
+          xhrFields: { withCredentials: false },
+          url: "http://localhost:8080/api/admin/admins/",
+          contentType: "application/json",
+          dataType: "json",
+          success: function (data) {
+              //alert(data);
+
+                  $.each(data, function (i) {
+                    var index = i + 1;
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td></tr>';
+                    $('#admins-table-rows').append(str);
+                  });
+          },
+          error: function () {
+              console.log("Unsuccessful request");
+          }
+      });
   });
 
   $("#allUsersButton").click(function(ev){

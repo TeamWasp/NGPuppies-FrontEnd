@@ -1,5 +1,8 @@
 $(document).ready(function() {
   
+    /* DataTables https://datatables.net/manual/installation */
+    $('table').DataTable();
+
     $(function() {
       $('#subscribers-table-container, #bills-table-container, #top-10-subscribers-table-container, #paid-bills-table-container')
           .hide();
