@@ -1,23 +1,50 @@
 $(document).ready(function() {
 
-  /* DataTables https://datatables.net/manual/installation */
-  var usersTable = $('#all-users-table').DataTable();
-  /* $('table').DataTable( {
-    select: true
-  }); */
-  
-
-  $.ajaxSetup({
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
-    }
-  });
-
-
   // hide components (forms & tables) at page load
   $(function() {
     $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container')
         .hide();
+  });
+
+  /* DataTables https://datatables.net/manual/installation */
+
+  // set tables to work with DataTable api
+  var clientsTable = $('#clients-table').DataTable();
+  var adminsTable = $('#admins-table').DataTable();
+  var subscribersTable = $('#subscribers-table').DataTable();
+  var servicesTable = $('#services-table').DataTable();
+  //set default values in columns when value is undefined/ empty
+  var allUsersTable = $('#all-users-table').DataTable({
+    "columns": [
+        null,
+        null,
+        null,
+        { "data.eik": "EIK", "defaultContent": "" },
+        { "data.emailAddress": "E-mail", "defaultContent": "" },
+        null,
+        null
+    ]
+  });
+
+  var billsTable = $('#bills-table').DataTable({
+    "columns": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        { "data.paymentDate": "Payment date", "defaultContent": "" }
+    ]
+  });  
+
+  // set ajax requests header to contain token
+  $.ajaxSetup({
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
+    }
   });
 
   $("#personalDetailsButton").click(function(ev){
@@ -43,14 +70,17 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
-              //alert(data);
-              var tbody = $("#clients-table-rows");
+            clientsTable.clear();
 
-                  $.each(data, function (i) {
-                    var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].eik + '</td></tr>';
-                    $('#clients-table-rows').append(str);
-                  });
+            $.each(data, function (i) {
+              var index = i + 1;
+              clientsTable.row.add([
+                  index, 
+                  data[i].username, 
+                  data[i].eik
+              ]).draw(false);
+             
+            });
           },
           error: function () {
               console.log("Unsuccessful request");
@@ -74,13 +104,19 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
-              //alert(data);
+            adminsTable.clear();
 
-                  $.each(data, function (i) {
-                    var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
-                    $('#admins-table-rows').append(str);
-                  });
+            $.each(data, function (i) {
+              var index = i + 1;
+              adminsTable.row.add([
+                  index, 
+                  data[i].username, 
+                  data[i].emailAddress,
+                  data[i].enabled,
+                  data[i].firstLogin
+              ]).draw(false);
+             
+            });
           },
           error: function () {
               console.log("Unsuccessful request");
@@ -103,12 +139,11 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
-              usersTable.clear();
-              //alert(data);
+              allUsersTable.clear();
 
                   $.each(data, function (i) {
                     var index = i + 1;
-                    usersTable.row.add([
+                    allUsersTable.row.add([
                         index, 
                         data[i].username, 
                         data[i].role.name, 
@@ -144,13 +179,23 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
-              //alert(data);
+            subscribersTable.clear();
 
-                  $.each(data, function (i) {
-                    var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].phoneNumber + '</td><td>' + data[i].firstName + '</td><td>' + data[i].lastName + '</td><td>' + data[i].egn + '</td><td>' + data[i].address.country + '</td><td>' + data[i].address.city + '</td><td>' + data[i].address.zipCode + '</td><td>' + data[i].address.street + '</td><td>' + data[i].bank.username + '</td></tr>';
-                    $('#subscribers-table-rows').append(str);
-                  });
+            $.each(data, function (i) {
+              var index = i + 1;
+              subscribersTable.row.add([
+                  index, 
+                  data[i].phoneNumber, 
+                  data[i].firstName,
+                  data[i].lastName,
+                  data[i].egn,
+                  data[i].address.country,
+                  data[i].address.city,
+                  data[i].address.zipCode,
+                  data[i].address.street,
+                  data[i].bank.username
+              ]).draw(false);
+            });
           },
           error: function () {
               console.log("Unsuccessful request");
@@ -164,7 +209,7 @@ $(document).ready(function() {
     $(".container").not("#footer").hide();
     $('#bills-table-container').show();
 
-    $("#subscribers-table-rows").empty();
+    $("#bills-table-rows").empty();
       $.ajax({
          // crossOrigin: true,
          // crossDomain: true,
@@ -174,13 +219,22 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
-              //alert(data);
+            billsTable.clear();
 
-                  $.each(data, function (i) {
-                    var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].billId + '</td><td>' + data[i].service.name + '</td><td>' + data[i].subscriber.phoneNumber + '</td><td>' + data[i].egn + '</td><td>' + data[i].address.country + '</td><td>' + data[i].address.city + '</td><td>' + data[i].address.zipCode + '</td><td>' + data[i].address.street + '</td><td>' + data[i].bank.username + '</td></tr>';
-                    $('#subscribers-table-rows').append(str);
-                  });
+            $.each(data, function (i) {
+              billsTable.row.add([
+                  data[i].billId, 
+                  data[i].service.name,
+                  data[i].subscriber.phoneNumber,
+                  data[i].subscriber.firstName + " " + data[i].subscriber.lastName,
+                  data[i].subscriber.egn,
+                  data[i].subscriber.address.country,
+                  data[i].subscriber.address.city,
+                  data[i].subscriber.address.zipCode,
+                  data[i].subscriber.address.street,
+                  data[i].subscriber.bank.username
+                ]).draw(false);
+            });
           },
           error: function () {
               console.log("Unsuccessful request");
@@ -193,9 +247,33 @@ $(document).ready(function() {
     
     $(".container").not("#footer").hide();
     $('#services-table-container').show();
+
+    $("#services-table-rows").empty();
+    $.ajax({
+       // crossOrigin: true,
+       // crossDomain: true,
+        type: 'GET',
+        xhrFields: { withCredentials: false },
+        url: "http://localhost:8080/api/admin/services/",
+        contentType: "application/json",
+        dataType: "json",
+        success: function (data) {
+          servicesTable.clear();
+
+          $.each(data, function (i) {
+            servicesTable.row.add([
+                data[i].serviceId, 
+                data[i].name
+              ]).draw(false);
+          });
+        },
+        error: function () {
+            console.log("Unsuccessful request");
+        }
+    });
   });
 
-  $.fn.dataTable.ext.errMode = 'none';
+  //$.fn.dataTable.ext.errMode = 'none';
   
 
     /* $("#createClient").click(function(ev){

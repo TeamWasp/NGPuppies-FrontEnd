@@ -120,7 +120,7 @@
     </div>
     <!-- Clients table container -->
     <div id="clients-table-container" class="container mt-5">
-        <table id="clients-table" class="table table-striped table-hover" data-order='[[ 1, "asc" ]]' width="100%">
+        <table id="clients-table" class="table table-striped table-hover">
             <caption>All clients table</caption>
             <thead class="thead-light">
                 <tr>
@@ -136,7 +136,7 @@
 
     <!-- Admins table container -->
     <div id="admins-table-container" class="container mt-5">
-        <table class="table table-striped table-hover">
+        <table id="admins-table" class="table table-striped table-hover">
             <caption>All admins table</caption>
             <thead class="thead-light">
                 <tr>
@@ -172,7 +172,7 @@
 
     <!-- Subscribers table container -->
     <div id="subscribers-table-container" class="container mt-5">
-        <table class="table table-striped table-hover">
+        <table id="subscribers-table" class="table table-striped table-hover">
             <caption>All subscribers table</caption>
             <thead class="thead-light">
                 <tr>
@@ -194,14 +194,14 @@
 
     <!-- Bills table container -->
     <div id="bills-table-container" class="container mt-5">
-        <table class="table table-striped table-hover">
+        <table id="bills-table" class="table table-striped table-hover">
             <caption>All bills table</caption>
             <thead class="thead-light">
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Bill ID</th>
                 <th scope="col">Service</th>
                 <th scope="col">Subscriber's phone #</th>
+                <th scope="col">Subscriber's full name</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
                 <th scope="col">Amount</th>
@@ -215,11 +215,10 @@
 
     <!-- Services table container -->
     <div id="services-table-container" class="container mt-5">
-        <table class="table table-striped table-hover">
+        <table id="services-table" class="table table-striped table-hover">
             <caption>All services table</caption>
             <thead class="thead-light">
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Service ID</th>
                 <th scope="col">Name</th>
                 </tr>
