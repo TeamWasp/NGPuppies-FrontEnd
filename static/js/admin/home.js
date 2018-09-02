@@ -12,6 +12,7 @@ $(document).ready(function() {
     }
   });
 
+  // hide components (forms & tables) at page load
   $(function() {
     $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container')
         .hide();
@@ -19,23 +20,15 @@ $(document).ready(function() {
 
   $("#personalDetailsButton").click(function(ev){
     ev.preventDefault;
-    $('#all-users-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#bills-table-container').hide();
-    $('#services-table-container').hide();
-    $('#admins-table-container').hide();
-    $("#clients-table-container").hide();
+
+    $(".container").not("#footer").hide();
     $("#personalDetailsForm").show();
   });
 
   $("#clientsButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
-    $('#all-users-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#bills-table-container').hide();
-    $('#services-table-container').hide();
-    $('#admins-table-container').hide();
+
+    $(".container").not("#footer").hide();
     $("#clients-table-container").show();
 
     $("#clients-table-rows").empty();
@@ -65,14 +58,9 @@ $(document).ready(function() {
 
   $("#adminsButton").click(function(ev){
     ev.preventDefault;
-    /* $("#personalDetailsForm").hide();
-    $('#clients-table-container').hide();
-    $('#all-users-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#bills-table-container').hide();
-    $('#services-table-container').hide(); */
-    $('.container')filter().hide();
-    $('#admins-table-container').show();
+    
+    $(".container").not("#footer").hide();
+    $("#admins-table-container").show();
 
     $("#admins-table-rows").empty();
       $.ajax({
@@ -88,7 +76,7 @@ $(document).ready(function() {
 
                   $.each(data, function (i) {
                     var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td></tr>';
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
                     $('#admins-table-rows').append(str);
                   });
           },
@@ -100,45 +88,98 @@ $(document).ready(function() {
 
   $("#allUsersButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
-    $('#clients-table-container').hide();
-    $('#admins-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#bills-table-container').hide();
-    $('#services-table-container').hide();
+    
+    $(".container").not("#footer").hide();
     $('#all-users-table-container').show();
+
+    $("#all-users-table-rows").empty();
+      $.ajax({
+         // crossOrigin: true,
+         // crossDomain: true,
+          type: 'GET',
+          xhrFields: { withCredentials: false },
+          url: "http://localhost:8080/api/admin/users/",
+          contentType: "application/json",
+          dataType: "json",
+          success: function (data) {
+              //alert(data);
+
+                  $.each(data, function (i) {
+                    var index = i + 1;
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].role.name + '</td><td>' + data[i].eik + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
+                    $('#all-users-table-rows').append(str);
+                  });
+          },
+          error: function () {
+              console.log("Unsuccessful request");
+          }
+      });
   });
 
   $("#subscribersButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
-    $('#clients-table-container').hide();
-    $('#admins-table-container').hide();
-    $('#all-users-table-container').hide();
-    $('#bills-table-container').hide();
-    $('#services-table-container').hide();
+    
+    $(".container").not("#footer").hide();
     $('#subscribers-table-container').show();
+
+    $("#subscribers-table-rows").empty();
+      $.ajax({
+         // crossOrigin: true,
+         // crossDomain: true,
+          type: 'GET',
+          xhrFields: { withCredentials: false },
+          url: "http://localhost:8080/api/admin/subscribers/",
+          contentType: "application/json",
+          dataType: "json",
+          success: function (data) {
+              //alert(data);
+
+                  $.each(data, function (i) {
+                    var index = i + 1;
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].phoneNumber + '</td><td>' + data[i].firstName + '</td><td>' + data[i].lastName + '</td><td>' + data[i].egn + '</td><td>' + data[i].address.country + '</td><td>' + data[i].address.city + '</td><td>' + data[i].address.zipCode + '</td><td>' + data[i].address.street + '</td><td>' + data[i].bank.username + '</td></tr>';
+                    $('#subscribers-table-rows').append(str);
+                  });
+          },
+          error: function () {
+              console.log("Unsuccessful request");
+          }
+      });
   });
 
   $("#billsButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
-    $('#clients-table-container').hide();
-    $('#admins-table-container').hide();
-    $('#all-users-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#services-table-container').hide();
+    
+    $(".container").not("#footer").hide();
     $('#bills-table-container').show();
+
+    $("#subscribers-table-rows").empty();
+      $.ajax({
+         // crossOrigin: true,
+         // crossDomain: true,
+          type: 'GET',
+          xhrFields: { withCredentials: false },
+          url: "http://localhost:8080/api/admin/bills/",
+          contentType: "application/json",
+          dataType: "json",
+          success: function (data) {
+              //alert(data);
+
+                  $.each(data, function (i) {
+                    var index = i + 1;
+                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].billId + '</td><td>' + data[i].service.name + '</td><td>' + data[i].subscriber.phoneNumber + '</td><td>' + data[i].egn + '</td><td>' + data[i].address.country + '</td><td>' + data[i].address.city + '</td><td>' + data[i].address.zipCode + '</td><td>' + data[i].address.street + '</td><td>' + data[i].bank.username + '</td></tr>';
+                    $('#subscribers-table-rows').append(str);
+                  });
+          },
+          error: function () {
+              console.log("Unsuccessful request");
+          }
+      });
   });
 
   $("#servicesButton").click(function(ev){
     ev.preventDefault;
-    $("#personalDetailsForm").hide();
-    $('#clients-table-container').hide();
-    $('#admins-table-container').hide();
-    $('#all-users-table-container').hide();
-    $('#subscribers-table-container').hide();
-    $('#bills-table-container').hide();
+    
+    $(".container").not("#footer").hide();
     $('#services-table-container').show();
   });
 
