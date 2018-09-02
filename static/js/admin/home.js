@@ -8,11 +8,36 @@ $(document).ready(function() {
 
   /* DataTables https://datatables.net/manual/installation */
 
-  // set tables to work with DataTable api
-  var clientsTable = $('#clients-table').DataTable();
-  var adminsTable = $('#admins-table').DataTable();
-  var subscribersTable = $('#subscribers-table').DataTable();
-  var servicesTable = $('#services-table').DataTable();
+  // set tables to work with DataTable api and make them preserve the last set state (ordering)
+  var clientsTable = $('#clients-table').DataTable({
+    stateSave: true
+  });
+
+    var clientsTable = $('#clients-table').DataTable();
+
+    $('#clients-table').on( 'click', 'tbody tr', function () {
+    clientsTable.row( this ).edit();
+    } );
+  /* var clientsTable = $('#clientsTable').DataTable();
+ 
+$('#clientsTable').on( 'click', 'tbody tr', function () {
+    myTable.row( this ).edit( {
+        buttons: [
+            { label: 'Cancel', fn: function () { this.close(); } },
+            'Edit'
+        ]
+    } );
+} ); */
+
+  var adminsTable = $('#admins-table').DataTable({
+    stateSave: true
+  });
+  var subscribersTable = $('#subscribers-table').DataTable({
+    stateSave: true
+  });
+  var servicesTable = $('#services-table').DataTable({
+    stateSave: true
+  });
   //set default values in columns when value is undefined/ empty
   var allUsersTable = $('#all-users-table').DataTable({
     "columns": [
@@ -23,7 +48,8 @@ $(document).ready(function() {
         { "data.emailAddress": "E-mail", "defaultContent": "" },
         null,
         null
-    ]
+    ],
+    stateSave: true
   });
 
   var billsTable = $('#bills-table').DataTable({
@@ -37,7 +63,9 @@ $(document).ready(function() {
         null,
         null,
         { "data.paymentDate": "Payment date", "defaultContent": "" }
-    ]
+    ],
+    stateSave: true,
+    responsive: true
   });  
 
   // set ajax requests header to contain token
@@ -227,12 +255,11 @@ $(document).ready(function() {
                   data[i].service.name,
                   data[i].subscriber.phoneNumber,
                   data[i].subscriber.firstName + " " + data[i].subscriber.lastName,
-                  data[i].subscriber.egn,
-                  data[i].subscriber.address.country,
-                  data[i].subscriber.address.city,
-                  data[i].subscriber.address.zipCode,
-                  data[i].subscriber.address.street,
-                  data[i].subscriber.bank.username
+                  data[i].startDate,
+                  data[i].endDate,
+                  data[i].amount,
+                  data[i].currency.currency,
+                  data[i].paymentDate
                 ]).draw(false);
             });
           },
