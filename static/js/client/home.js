@@ -94,7 +94,7 @@ $(document).ready(function() {
   } );
 
     $("#payBill").click(function(){
-      var billData = unpaidTable.rows('.selected').data()
+      var clientData = unpaidTable.rows('.selected').data();
       var newData=[];
       $.each(billData,function(i){
         newData.push(billData[i][0]);
@@ -103,7 +103,7 @@ $(document).ready(function() {
       $.ajax({
         type: 'PUT',
         xhrFields: { withCredentials: false },
-        url: 'http://localhost:8080/api/client/bills/pay',
+        url: 'http://localhost:8080/api/admin/clients/updateClient',
         contentType: "application/json",
         data: JSON.stringify(newData),
 
@@ -112,13 +112,7 @@ $(document).ready(function() {
           location.reload();
         }
       });
-
-
-
-    })
-
-
-
+    });
   });
   
  

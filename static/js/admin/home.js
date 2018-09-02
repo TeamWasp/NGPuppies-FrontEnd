@@ -10,33 +10,21 @@ $(document).ready(function() {
 
   // set tables to work with DataTable api and make them preserve the last set state (ordering)
   var clientsTable = $('#clients-table').DataTable({
-    stateSave: true
+    stateSave: true,
+    responsive: true
   });
-
-    var clientsTable = $('#clients-table').DataTable();
-
-    $('#clients-table').on( 'click', 'tbody tr', function () {
-    clientsTable.row( this ).edit();
-    } );
-  /* var clientsTable = $('#clientsTable').DataTable();
- 
-$('#clientsTable').on( 'click', 'tbody tr', function () {
-    myTable.row( this ).edit( {
-        buttons: [
-            { label: 'Cancel', fn: function () { this.close(); } },
-            'Edit'
-        ]
-    } );
-} ); */
 
   var adminsTable = $('#admins-table').DataTable({
-    stateSave: true
+    stateSave: true,
+    responsive: true
   });
   var subscribersTable = $('#subscribers-table').DataTable({
-    stateSave: true
+    stateSave: true,
+    responsive: true
   });
   var servicesTable = $('#services-table').DataTable({
-    stateSave: true
+    stateSave: true,
+    responsive: true
   });
   //set default values in columns when value is undefined/ empty
   var allUsersTable = $('#all-users-table').DataTable({
@@ -49,7 +37,8 @@ $('#clientsTable').on( 'click', 'tbody tr', function () {
         null,
         null
     ],
-    stateSave: true
+    stateSave: true,
+    responsive: true
   });
 
   var billsTable = $('#bills-table').DataTable({
@@ -103,7 +92,8 @@ $('#clientsTable').on( 'click', 'tbody tr', function () {
             $.each(data, function (i) {
               var index = i + 1;
               clientsTable.row.add([
-                  index, 
+                  index,
+                  data[i].userId, 
                   data[i].username, 
                   data[i].eik
               ]).draw(false);
@@ -300,71 +290,59 @@ $('#clientsTable').on( 'click', 'tbody tr', function () {
     });
   });
 
-  //$.fn.dataTable.ext.errMode = 'none';
-  
+  /* $('#clients-table tbody').on( 'click', 'tr', function () {
+    $(this).toggleClass('selected');
+  }); */
 
-    /* $("#createClient").click(function(ev){
-      ev.preventDefault();
+  $('#clients-table tbody').on( 'click', 'tr', function () {
+    if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+    }
+    else {
+        clientsTable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+    }
+  });
+
+  $('#deleteClient').click( function () {
+        clientsTable.row('.selected').remove().draw( false );
+        var data = clientsTable.rows('.selected').data();
+        console.log(data);
+        var clientData = [];
+        clientData.push(data[0][1]);
         $.ajax({
-          method: 'GET',
-          url: 'localhost:8080/api/admin/services/1',
-          dataType: 'json',
-          // Fetch the stored token from localStorage and set in the header
-          headers: {"Authorization": localStorage.getItem('token')}
-      }).done(function(data){        
-          alert("serviceId is " + data.item.serviceId);
-          /* $.each(data, function(index, item){
-            var $tr = $('<tr>').append(
-              $('<td>').text(item.serviceId),
-              $('<td>').text(item.name)
-          ).appendTo('#records_table');*/
-          /*});
+            type: 'DELETE',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/clients/deleteClient/' + clientId,
+            contentType: "application/json",
+            data: JSON.stringify(clientData),
+      
+            success: function(data) {
+              alert('Load was performed.');
+              location.reload();
+            }
+          });
+  });
+
+  /* $("#updateClient").click(function(){
+      alert("edit button click");
+    /* var billData = unpaidTable.rows('.selected').data();
+    var newData=[];
+    $.each(billData,function(i){
+      newData.push(billData[i][0]);
+    });
+
+    $.ajax({
+      type: 'PUT',
+      xhrFields: { withCredentials: false },
+      url: 'http://localhost:8080/api/client/bills/pay',
+      contentType: "application/json",
+      data: JSON.stringify(newData),
+
+      success: function(data) {
+        alert('Load was performed.');
+        location.reload();
+      }
     }); */
-
-    /* $("#proceed").on("click", function () {
-      $("#clients-table-rows").empty();
-      var invoices = $.ajax({
-          type: 'GET',
-          url: "http://localhost:8080/api/admin/clients/",
-          contentType: "application/json",
-          success: function (data) {
-              var tbody = $("#clients-table-rows"),
-                  props = ["username", "password", "EIK"];
-              $.each(data, function (i, data) {
-                  var tr = $('<tr>');
-                  $('<input' + " value=" + data["userId"] + ' type="checkbox" class="form-check-input" checked="checked">').appendTo(tr);
-                  $.each(props, function (i, prop) {
-                      $('<td>').html(data[prop]).appendTo(tr);
-                  });
-              });
-          },
-          error: function () {
-              console.log("Unsuccessful request");
-          }
-      })
-    }); */
-
-    // $('#test').click(function (ev) {
-    //     ev.preventDefault();
-
-    //     var token = localStorage.getItem("token");
-    //     $.ajaxSetup({
-    //         headers : {
-    //           'Authorization' : 'Bearer '+token,
-    //         }
-    //       });
-
-    //     var jqxhr = $.getJSON( "http://localhost:8080/api/admin/admins/", function() {
-    //         console.log( "success" );
-    //       })
-    //         .done(function() {
-    //           console.log( "second success" );
-    //         })
-    //         .fail(function() {
-    //           console.log( "error" );
-    //         })
-    //         .always(function() {
-    //           console.log( "complete" );
-    //         });
-    // });
+  //}); */
 });
