@@ -35,7 +35,7 @@
                     <button id="subscribersButton" class="btn m-1 btn-secondary">Subscribers <span class="sr-only"></span></button>
                 </li>
                 <li class="nav-item active">
-                    <button id="billsButton" class="btn m-1 btn-secondary">Bills <span class="sr-only"></span></button>
+                    <button id="billsButton" class="btn m-1 btn-secondary">Unpaid Bills<span class="sr-only"></span></button>
                 </li>
                  <!-- Dropdown menu -->
                 <li class="nav-item">
@@ -106,23 +106,25 @@
 
     <!-- Bills table container -->
     <div id="bills-table-container" class="container mt-5">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="unpaid-bills-table">
             <caption>All bills table</caption>
             <thead class="thead-light">
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Bill ID</th>
                 <th scope="col">Service</th>
                 <th scope="col">Subscriber's phone #</th>
+                <th scope="col">Subscriber's name</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
                 <th scope="col">Amount</th>
+                <th scope="col">(BGN) Amount</th>
                 <th scope="col">Currency</th>
                 <th scope="col">Payment date</th>
                 </tr>
             </thead>
             <tbody id="bills-table-rows"></tbody>
         </table>
+        <button class="btn m-1 btn-secondary" id="payBill">Pay Selected Bills</button>
     </div>      
     
     <!-- Paid bills table container -->
@@ -131,7 +133,6 @@
                 <caption>Paid bills table</caption>
                 <thead class="thead-light">
                     <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Bill ID</th>
                     <th scope="col">Service</th>
                     <th scope="col">Subscriber's phone #</th>
@@ -144,6 +145,7 @@
                 </thead>
                 <tbody id="paid-bills-table-rows"></tbody>
             </table>
+           
         </div>      
 
     <div id="footer" class="container marketing fixed-bottom">
