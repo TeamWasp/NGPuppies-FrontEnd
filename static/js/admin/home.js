@@ -1,16 +1,18 @@
 $(document).ready(function() {
 
   /* DataTables https://datatables.net/manual/installation */
-  $('table').DataTable();
+  var usersTable = $('#all-users-table').DataTable();
   /* $('table').DataTable( {
     select: true
   }); */
+  
 
   $.ajaxSetup({
     beforeSend: function(xhr) {
         xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
     }
   });
+
 
   // hide components (forms & tables) at page load
   $(function() {
@@ -90,7 +92,6 @@ $(document).ready(function() {
     ev.preventDefault;
     
     $(".container").not("#footer").hide();
-    $('#all-users-table-container').show();
 
     $("#all-users-table-rows").empty();
       $.ajax({
@@ -102,18 +103,30 @@ $(document).ready(function() {
           contentType: "application/json",
           dataType: "json",
           success: function (data) {
+              usersTable.clear();
               //alert(data);
 
                   $.each(data, function (i) {
                     var index = i + 1;
-                    var str = '<tr><th scope="row">' + index + '</th><td>' + data[i].username + '</td><td>' + data[i].role.name + '</td><td>' + data[i].eik + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
-                    $('#all-users-table-rows').append(str);
+                    var str = '<tr><td>' + index + '</td><td>' + data[i].username + '</td><td>' + data[i].role.name + '</td><td>' + data[i].eik + '</td><td>' + data[i].emailAddress + '</td><td>' + data[i].enabled + '</td><td>' + data[i].firstLogin + '</td></tr>';
+                    usersTable.row.add([
+                        index, 
+                        data[i].username, 
+                        data[i].role.name, 
+                        data[i].eik, 
+                        data[i].emailAddress,
+                        data[i].enabled,
+                        data[i].firstLogin
+                    ]).draw(false);
+                   
                   });
           },
           error: function () {
               console.log("Unsuccessful request");
           }
       });
+      
+      $('#all-users-table-container').show();
   });
 
   $("#subscribersButton").click(function(ev){
@@ -182,6 +195,9 @@ $(document).ready(function() {
     $(".container").not("#footer").hide();
     $('#services-table-container').show();
   });
+
+  $.fn.dataTable.ext.errMode = 'none';
+  
 
     /* $("#createClient").click(function(ev){
       ev.preventDefault();
