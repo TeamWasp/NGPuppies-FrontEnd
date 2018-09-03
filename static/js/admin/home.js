@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  /*-------------------------------------------- INITIAL SETUP ------------------------------------------------------*/
   // hide components (forms & tables) at page load
   $(function() {
     $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create')
@@ -64,6 +65,7 @@ $(document).ready(function() {
     }
   });
 
+  /*-------------------------------------------- LOADING MODULE TABLES ------------------------------------------------------*/
   $("#personalDetailsButton").click(function(ev){
     ev.preventDefault;
 
@@ -290,6 +292,7 @@ $(document).ready(function() {
     });
   });
 
+  /*-------------------------------------------- ADD (SINGLE-)ROW SELECTORS TO TABLES ------------------------------------------------------*/
   // add single row selector to clients table body
   $('#clients-table tbody').on( 'click', 'tr', function () {
     if ( $(this).hasClass('selected') ) {
@@ -303,7 +306,7 @@ $(document).ready(function() {
     $("#clientsDetailsForm-update").hide();
     $("#clientsDetailsForm-create").hide();
   });
-
+    // CLIENTS TABLE - DELETE BUTTON
   $('#deleteClient').click( function () {
         var data = clientsTable.row('.selected').data();
         console.log(data);
@@ -323,32 +326,35 @@ $(document).ready(function() {
           });
   });
 
+  // CLIENTS TABLE - UPDATE BUTTON
   $('#updateClient').click( function () {
         $("#clientsDetailsForm-create").hide();
         var data = clientsTable.row('.selected').data();
         if (data == null) {
             alert("No row is selected! Please select a row before updating!");
+        } else {
+            // reset previously entered passwords
+            data.push(null);
+            data.push(null);
+            var clientsForm = $('#clientsDetailsForm-update');
+
+            var userId = data[1];
+            var username = data[2];
+            var eik = data[3];
+            var password1 = data[4];
+            var password2 = data[5];
+
+            $("#clientUserId-update").val(userId);
+            $("#clientUsername-update").val(username);
+            $("#clientEik-update").val(eik);
+            $("#clientPassword1-update").val(password1);
+            $("#clientPassword2-update").val(password2);
+
+            $(clientsForm).show();
         }
-        // reset previously entered passwords
-        data.push(null);
-        data.push(null);
-        var clientsForm = $('#clientsDetailsForm-update');
-
-        var userId = data[1];
-        var username = data[2];
-        var eik = data[3];
-        var password1 = data[4];
-        var password2 = data[5];
-
-        $("#clientUserId-update").val(userId);
-        $("#clientUsername-update").val(username);
-        $("#clientEik-update").val(eik);
-        $("#clientPassword1-update").val(password1);
-        $("#clientPassword2-update").val(password2);
-
-        $(clientsForm).show();
   });
 
+  // CREATE CLIENT CONSTRUCTOR
   var Client = function(id, username, password, eik) {
     this.id = id;
     this.username = username;
@@ -356,6 +362,12 @@ $(document).ready(function() {
     this.eik = eik;
     }
 
+    // CLIENT TABLE UPDATE FORM - CANCEL BUTTON
+  $('#clientCancelButton-update').click( function () {
+    $("#clientsDetailsForm-update").hide();
+  });
+
+    // CLIENT TABLE UPDATE FORM - SUBMIT BUTTON
   $('#clientSubmitButton-update').click( function () {
     var userId = $("#clientUserId-update").val();
     var updatedUsername = $("#clientUsername-update").val();
@@ -408,7 +420,7 @@ $(document).ready(function() {
     };
   });
 
-  // create client button
+  // CLIENT TABLE CREATE BUTTON
   $('#createClient').click( function () {
     $("#clientsDetailsForm-update").hide();
       var data = [];
@@ -421,6 +433,12 @@ $(document).ready(function() {
       $('#clientsDetailsForm-create').show();
   });
 
+  // CLIENT TABLE CREATE FORM - CANCEL BUTTON
+  $('#clientCancelButton-create').click( function () {
+    $("#clientsDetailsForm-create").hide();
+  });
+
+    // CLIENT TABLE CREATE FORM - SUBMIT BUTTON
   $('#clientSubmitButton-create').click( function () {
     var newUsername = $("#clientUsername-create").val();
     var newEik = $("#clientEik-create").val();
