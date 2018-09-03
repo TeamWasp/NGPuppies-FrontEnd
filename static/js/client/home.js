@@ -205,7 +205,7 @@ $(document).ready(function() {
   } );
 
     $("#payBill").click(function(){
-      var clientData = unpaidTable.rows('.selected').data();
+      var billData = unpaidTable.rows('.selected').data();
       var newData=[];
       $.each(billData,function(i){
         newData.push(billData[i][0]);
@@ -214,7 +214,7 @@ $(document).ready(function() {
       $.ajax({
         type: 'PUT',
         xhrFields: { withCredentials: false },
-        url: 'http://localhost:8080/api/admin/clients/updateClient',
+        url: 'http://localhost:8080/api/client/bills/pay',
         contentType: "application/json",
         data: JSON.stringify(newData),
 

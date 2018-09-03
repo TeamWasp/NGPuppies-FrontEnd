@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // hide components (forms & tables) at page load
   $(function() {
-    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container')
+    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm')
         .hide();
   });
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
   // set tables to work with DataTable api and make them preserve the last set state (ordering)
   var clientsTable = $('#clients-table').DataTable({
     stateSave: true,
-    responsive: true
+    responsive: true,
   });
 
   var adminsTable = $('#admins-table').DataTable({
@@ -305,44 +305,68 @@ $(document).ready(function() {
   });
 
   $('#deleteClient').click( function () {
+        var data = clientsTable.row('.selected').data();
         clientsTable.row('.selected').remove().draw( false );
-        var data = clientsTable.rows('.selected').data();
-        console.log(data);
-        var clientData = [];
-        clientData.push(data[0][1]);
+        var clientData = data[1];
+        
         $.ajax({
             type: 'DELETE',
             xhrFields: { withCredentials: false },
-            url: 'http://localhost:8080/api/admin/clients/deleteClient/' + clientId,
+            url: 'http://localhost:8080/api/admin/clients/deleteClient/' + clientData,
             contentType: "application/json",
             data: JSON.stringify(clientData),
       
             success: function(data) {
               alert('Load was performed.');
-              location.reload();
+              //location.reload();
             }
           });
   });
 
-  /* $("#updateClient").click(function(){
-      alert("edit button click");
-    /* var billData = unpaidTable.rows('.selected').data();
-    var newData=[];
-    $.each(billData,function(i){
-      newData.push(billData[i][0]);
-    });
+  $('#updateClient').click( function () {
+        var data = clientsTable.row('.selected').data();
+        // clientsTable.row('.selected').remove().draw( false );
+        console.log(data);
+        var clientsForm = $('#clientsDetailsForm');
 
+        var userId = data[1];
+        var username = data[2];
+        var eik = data[3];
+        console.log(userId);
+        console.log(username);
+        console.log(eik);
+
+        $("#clientUserId").val(userId);
+        $("#clientUsername").val(username);
+        $("#clientEik").val(eik);
+        $(clientsForm).show();
+  });
+
+  $('#clientSubmitButton').click( function () {
+    alert("button clicked");
+    var userId = $("#clientUserId").val();
+    var username = $("#clientUsername").val();
+    var eik = $("#clientEik").val();
+    var password = $("#clientPassword1").val();
+    var password2 = $("#clientPassword2").val();
+    var newData = [];
+
+    newData.push(username);
+    newData.push(eik);
+    newData.push(password);
+
+    console.log(newData);
     $.ajax({
-      type: 'PUT',
-      xhrFields: { withCredentials: false },
-      url: 'http://localhost:8080/api/client/bills/pay',
-      contentType: "application/json",
-      data: JSON.stringify(newData),
+        type: 'PUT',
+        xhrFields: { withCredentials: false },
+        url: 'http://localhost:8080/api/admin/clients/updateClient/' + userId,
+        contentType: "application/json",
+        data: JSON.stringify(newData),
 
-      success: function(data) {
-        alert('Load was performed.');
-        location.reload();
-      }
-    }); */
-  //}); */
+        success: function(data) {
+          alert('Load was performed.');
+          //location.reload();
+        }
+        });
+  })
 });
