@@ -238,7 +238,7 @@
                                 <div class="form-group">
                                     <div class="aab controls col-md-4 "></div>
                                     <div class="controls col-md-8 ">
-                                        <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="clientSubmitButton-create" />
+                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="clientSubmitButton-create" />
                                         or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="clientCancelButton-create" />
                                     </div>
                                 </div>
@@ -256,6 +256,7 @@
             <thead class="thead-light">
                 <tr>
                 <th scope="col">#</th>
+                <th scope="col">User id</th>
                 <th scope="col">Username</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Enabled</th>
@@ -265,12 +266,119 @@
             <tbody id="admins-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteAdmins">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateAdmins">Update</button>
-                <button class="btn m-1 btn-secondary" id="createAdmins">Create</button>
+                <button class="btn m-1 btn-secondary" id="deleteAdmin">Delete</button>
+                <button class="btn m-1 btn-secondary" id="updateAdmin">Update</button>
+                <button class="btn m-1 btn-secondary" id="createAdmin">Create</button>
         </div>
     </div> 
+<!-- Update form - admins -->
+<div id="adminsDetailsForm-update" class="container">
 
+        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Admin Details - Update Form</div>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" action=".">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <form  class="form-horizontal" method="post" >
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <div class="form-group required">
+                                    <label for="id_userId" class="control-label col-md-4  requiredField"> User id</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="adminUserId-update" maxlength="10" name="userId" disabled style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="adminUsername-update" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_email" class="control-label col-md-4  requiredField"> E-mail</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md emailinput form-control" id="adminEmailAddress-update" name="id_email" placeholder="Enter e-mail" style="margin-bottom: 10px" type="email" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="adminPassword1-update" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="adminPassword2-update" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="adminSubmitButton-update" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-update" />
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Create form - admins -->
+<div id="adminsDetailsForm-create" class="container">
+
+        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Admin Details - Create Form</div>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" action=".">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <form  class="form-horizontal" method="post" >
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="adminUsername-create" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_email" class="control-label col-md-4  requiredField"> E-mail</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md emailinput form-control" id="adminEmailAddress-create" name="id_eik" placeholder="Enter e-mail" style="margin-bottom: 10px" type="email" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="adminPassword1-create" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="adminPassword2-create" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="adminSubmitButton-create" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-create" />
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- All users table container -->
     <div id="all-users-table-container" class="container mt-5">
         <table id="all-users-table" class="display table table-striped table-hover" style="width:100%">
@@ -278,6 +386,7 @@
             <thead class="thead-light">
                 <tr>
                 <th scope="col">#</th>
+                <th scope="col">User id</th>
                 <th scope="col">Username</th>
                 <th scope="col">Role</th>
                 <th scope="col">EIK</th>
@@ -289,9 +398,7 @@
             <tbody id="all-users-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteAllUsers">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateAllUsers">Update</button>
-                <button class="btn m-1 btn-secondary" id="createAllUsers">Create</button>
+                <button class="btn m-1 btn-secondary" id="deleteAnyUser">Delete</button>
         </div>
     </div> 
 
@@ -316,19 +423,180 @@
             <tbody id="subscribers-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteSubscribers">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateSubscribers">Update</button>
-                <button class="btn m-1 btn-secondary" id="createSubscribers">Create</button>
+                <button class="btn m-1 btn-secondary" id="deleteSubscriber">Delete</button>
+                <button class="btn m-1 btn-secondary" id="updateSubscriber">Update</button>
+                <button class="btn m-1 btn-secondary" id="createSubscriber">Create</button>
         </div>
     </div> 
+<!-- Update form - subscribers -->
+<div id="subscribersDetailsForm-update" class="container">
 
+        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Subscriber Details - Update Form</div>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" action=".">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <form  class="form-horizontal" method="post" >
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <div class="form-group required">
+                                    <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-update" maxlength="10" name="phoneNumber" disabled style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberFirstName-update" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberLastName-update" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberEgn-update" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberCountry-update" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberCity-update" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberZipCode-update" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberStreet-update" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberBank-update" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-update" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-update" />
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Create form - subscribers -->
+<div id="subscribersDetailsForm-create" class="container">
+
+        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Subscriber Details - Create Form</div>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" action=".">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <form  class="form-horizontal" method="post" >
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <div class="form-group required">
+                                    <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create" maxlength="10" name="phoneNumber" placeholder="Enter phone number" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberLastName-create" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberEgn-create" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberCountry-create" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberCity-create" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberStreet-create" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="subscriberBank-create" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-create" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-create" />
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Bills table container -->
     <div id="bills-table-container" class="container mt-5">
         <table id="bills-table" class="display table table-striped table-hover" style="width:100%">
             <caption>All bills table</caption>
             <thead class="thead-light">
                 <tr>
-                <th scope="col">Bill ID</th>
+                <th scope="col">Bill id</th>
                 <th scope="col">Service</th>
                 <th scope="col">Subscriber's phone #</th>
                 <th scope="col">Subscriber's full name</th>
@@ -342,9 +610,9 @@
             <tbody id="bills-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteBills">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateBills">Update</button>
-                <button class="btn m-1 btn-secondary" id="createBills">Create</button>
+                <button class="btn m-1 btn-secondary" id="deleteBill">Delete</button>
+                <button class="btn m-1 btn-secondary" id="updateBill">Update</button>
+                <button class="btn m-1 btn-secondary" id="createBill">Create</button>
         </div>
     </div> 
 
@@ -354,16 +622,16 @@
             <caption>All services table</caption>
             <thead class="thead-light">
                 <tr>
-                <th scope="col">Service ID</th>
+                <th scope="col">Service id</th>
                 <th scope="col">Name</th>
                 </tr>
             </thead>
             <tbody id="services-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteServices">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateServices">Update</button>
-                <button class="btn m-1 btn-secondary" id="createServices">Create</button>
+                <button class="btn m-1 btn-secondary" id="deleteService">Delete</button>
+                <button class="btn m-1 btn-secondary" id="updateService">Update</button>
+                <button class="btn m-1 btn-secondary" id="createService">Create</button>
         </div>
     </div> 
         
