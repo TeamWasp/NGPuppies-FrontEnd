@@ -306,6 +306,7 @@ $(document).ready(function() {
 
   $('#deleteClient').click( function () {
         var data = clientsTable.row('.selected').data();
+        console.log(data);
         clientsTable.row('.selected').remove().draw( false );
         var clientData = data[1];
         
@@ -342,26 +343,32 @@ $(document).ready(function() {
         $(clientsForm).show();
   });
 
+  var Client = function(id, username, password, eik) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.eik = eik;
+    }
+
   $('#clientSubmitButton').click( function () {
     alert("button clicked");
     var userId = $("#clientUserId").val();
-    var username = $("#clientUsername").val();
-    var eik = $("#clientEik").val();
-    var password = $("#clientPassword1").val();
-    var password2 = $("#clientPassword2").val();
-    var newData = [];
+    var updatedUsername = $("#clientUsername").val();
+    var updatedEik = $("#clientEik").val();
+    var updatedPassword = $("#clientPassword1").val();
+    var updatedPassword2 = $("#clientPassword2").val();
+    
+    //console.log("username input: " + updatedUsername);
+    var updatedClient = new Client(userId, updatedUsername, updatedPassword, updatedEik);
 
-    newData.push(username);
-    newData.push(eik);
-    newData.push(password);
-
-    console.log(newData);
+   // console.log("username: " + updatedClient.username);
+    //console.log("data to be json parsed: " + updatedClient);
     $.ajax({
         type: 'PUT',
         xhrFields: { withCredentials: false },
         url: 'http://localhost:8080/api/admin/clients/updateClient/' + userId,
         contentType: "application/json",
-        data: JSON.stringify(newData),
+        data: JSON.stringify(updatedClient),
 
         success: function(data) {
           alert('Load was performed.');
