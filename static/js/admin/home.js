@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // hide components (forms & tables) at page load
   $(function() {
-    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update')
+    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create')
         .hide();
   });
 
@@ -301,6 +301,7 @@ $(document).ready(function() {
     }
     // hide clients details form when switching across rows
     $("#clientsDetailsForm-update").hide();
+    $("#clientsDetailsForm-create").hide();
   });
 
   $('#deleteClient').click( function () {
@@ -323,6 +324,7 @@ $(document).ready(function() {
   });
 
   $('#updateClient').click( function () {
+        $("#clientsDetailsForm-create").hide();
         var data = clientsTable.row('.selected').data();
         if (data == null) {
             alert("No row is selected! Please select a row before updating!");
@@ -408,27 +410,68 @@ $(document).ready(function() {
 
   // create client button
   $('#createClient').click( function () {
-    var data = clientsTable.row('.selected').data();
-    if (data == null) {
-        alert("No row is selected! Please select a row before updating!");
-    }
-    // reset previously entered passwords
-    data.push(null);
-    data.push(null);
-    var clientsForm = $('#clientsDetailsForm-update');
+    $("#clientsDetailsForm-update").hide();
+      var data = [];
+      data.push(null);
+      var defaultVal = data[0];
+      $("#clientUsername-create").val(defaultVal);
+      $("#clientEik-create").val(defaultVal);
+      $("#clientPassword1-create").val(defaultVal);
+      $("#clientPassword2-create").val(defaultVal);
+      $('#clientsDetailsForm-create').show();
+  });
 
-    var userId = data[1];
-    var username = data[2];
-    var eik = data[3];
-    var password1 = data[4];
-    var password2 = data[5];
+  $('#clientSubmitButton-create').click( function () {
+    var newUsername = $("#clientUsername-create").val();
+    var newEik = $("#clientEik-create").val();
+    var newPassword = $("#clientPassword1-create").val();
+    var newPassword2 = $("#clientPassword2-create").val();
 
-    $("#clientUserId").val(userId);
-    $("#clientUsername").val(username);
-    $("#clientEik").val(eik);
-    $("#clientPassword1").val(password1);
-    $("#clientPassword2").val(password2);
+    if (newUsername == "" || newEik == "" || newPassword == "" || newPassword2 == "") {
+        alert("Please fill all fields in form to continue!");
+    } else if (newPassword != null && newPassword != newPassword2) {
+        alert("Password mismatch! Please check password before making changes!");
+    } else {
+        // set user id to 1, which used only for constructor building
+        var newClient = new Client(1, newUsername, newPassword, newEik);
 
-    $(clientsForm).show();
-});
+        $.ajax({
+            type: 'POST',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/clients/createClient',
+            contentType: "application/json",
+            data: JSON.stringify(newClient),
+    
+            success: function(data) {
+              $("#clients-table-rows").empty();
+              $("#clientsDetailsForm-create").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: { withCredentials: false },
+                    url: "http://localhost:8080/api/admin/clients/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        clientsTable.clear();
+    
+                        $.each(data, function (i) {
+                        var index = i + 1;
+                        clientsTable.row.add([
+                            index,
+                            data[i].userId, 
+                            data[i].username, 
+                            data[i].eik
+                        ]).draw(false);
+                        });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+            }
+        });
+    };
+  });
 });
