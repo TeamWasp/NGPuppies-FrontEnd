@@ -141,13 +141,70 @@
         </div>
     </div>
 
-    <!-- Update/ create form - clients -->
-    <div id="clientsDetailsForm" class="container">
+    <!-- Update form - clients -->
+    <div id="clientsDetailsForm-update" class="container">
 
             <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="panel-title">Client Details <span><input class="input-md  textinput textInput form-control" id="clientUserId" maxlength="30" name="username" placeholder="Enter userId" style="margin-bottom: 10px" type="text" /></span></div>
+                        <div class="panel-title">Client Details - Update Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                        <label for="id_userId" class="control-label col-md-4  requiredField"> User id</label>
+                                        <div class="controls col-md-8 ">
+                                            <input class="input-md  textinput textInput form-control" id="clientUserId-update" maxlength="10" name="userId" disabled style="margin-bottom: 10px" type="text" />
+                                        </div>
+                                    </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="clientUsername-update" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_email" class="control-label col-md-4  requiredField"> EIK</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md emailinput form-control" id="clientEik-update" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md textinput textInput form-control" id="clientPassword1-update" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md textinput textInput form-control" id="clientPassword2-update" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="clientSubmitButton-update" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="clientCancelButton-update" />
+                                    </div>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create form - clients -->
+    <div id="clientsDetailsForm-create" class="container">
+
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Client Details - Create Form</div>
                     </div>
                     <div class="panel-body" >
                         <form method="post" action=".">
@@ -157,25 +214,25 @@
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="clientUsername" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="clientUsername-create" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_email" class="control-label col-md-4  requiredField"> EIK</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md emailinput form-control" id="clientEik" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md emailinput form-control" id="clientEik-create" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword1" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                        <input class="input-md textinput textInput form-control" id="clientPassword1-create" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword2" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                        <input class="input-md textinput textInput form-control" id="clientPassword2-create" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
                                     </div>
                                 </div>
                                 <div class="form-group">

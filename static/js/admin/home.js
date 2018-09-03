@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // hide components (forms & tables) at page load
   $(function() {
-    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm')
+    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update')
         .hide();
   });
 
@@ -290,10 +290,7 @@ $(document).ready(function() {
     });
   });
 
-  /* $('#clients-table tbody').on( 'click', 'tr', function () {
-    $(this).toggleClass('selected');
-  }); */
-
+  // add single row selector to clients table body
   $('#clients-table tbody').on( 'click', 'tr', function () {
     if ( $(this).hasClass('selected') ) {
         $(this).removeClass('selected');
@@ -302,6 +299,8 @@ $(document).ready(function() {
         clientsTable.$('tr.selected').removeClass('selected');
         $(this).addClass('selected');
     }
+    // hide clients details form when switching across rows
+    $("#clientsDetailsForm-update").hide();
   });
 
   $('#deleteClient').click( function () {
@@ -319,27 +318,32 @@ $(document).ready(function() {
       
             success: function(data) {
               alert('Load was performed.');
-              //location.reload();
             }
           });
   });
 
   $('#updateClient').click( function () {
         var data = clientsTable.row('.selected').data();
-        // clientsTable.row('.selected').remove().draw( false );
-        console.log(data);
-        var clientsForm = $('#clientsDetailsForm');
+        if (data == null) {
+            alert("No row is selected! Please select a row before updating!");
+        }
+        // reset previously entered passwords
+        data.push(null);
+        data.push(null);
+        var clientsForm = $('#clientsDetailsForm-update');
 
         var userId = data[1];
         var username = data[2];
         var eik = data[3];
-        console.log(userId);
-        console.log(username);
-        console.log(eik);
+        var password1 = data[4];
+        var password2 = data[5];
 
-        $("#clientUserId").val(userId);
-        $("#clientUsername").val(username);
-        $("#clientEik").val(eik);
+        $("#clientUserId-update").val(userId);
+        $("#clientUsername-update").val(username);
+        $("#clientEik-update").val(eik);
+        $("#clientPassword1-update").val(password1);
+        $("#clientPassword2-update").val(password2);
+
         $(clientsForm).show();
   });
 
@@ -350,30 +354,81 @@ $(document).ready(function() {
     this.eik = eik;
     }
 
-  $('#clientSubmitButton').click( function () {
-    alert("button clicked");
-    var userId = $("#clientUserId").val();
-    var updatedUsername = $("#clientUsername").val();
-    var updatedEik = $("#clientEik").val();
-    var updatedPassword = $("#clientPassword1").val();
-    var updatedPassword2 = $("#clientPassword2").val();
+  $('#clientSubmitButton-update').click( function () {
+    var userId = $("#clientUserId-update").val();
+    var updatedUsername = $("#clientUsername-update").val();
+    var updatedEik = $("#clientEik-update").val();
+    var updatedPassword = $("#clientPassword1-update").val();
+    var updatedPassword2 = $("#clientPassword2-update").val();
+
+    if (updatedPassword != null && updatedPassword != updatedPassword2) {
+        alert("Password mismatch! Please check password before making changes!");
+    } else {
+        var updatedClient = new Client(userId, updatedUsername, updatedPassword, updatedEik);
+
+        $.ajax({
+            type: 'PUT',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/clients/updateClient/' + userId,
+            contentType: "application/json",
+            data: JSON.stringify(updatedClient),
     
-    //console.log("username input: " + updatedUsername);
-    var updatedClient = new Client(userId, updatedUsername, updatedPassword, updatedEik);
-
-   // console.log("username: " + updatedClient.username);
-    //console.log("data to be json parsed: " + updatedClient);
-    $.ajax({
-        type: 'PUT',
-        xhrFields: { withCredentials: false },
-        url: 'http://localhost:8080/api/admin/clients/updateClient/' + userId,
-        contentType: "application/json",
-        data: JSON.stringify(updatedClient),
-
-        success: function(data) {
-          alert('Load was performed.');
-          //location.reload();
-        }
+            success: function(data) {
+              $("#clients-table-rows").empty();
+              $("#clientsDetailsForm-update").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: { withCredentials: false },
+                    url: "http://localhost:8080/api/admin/clients/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        clientsTable.clear();
+    
+                        $.each(data, function (i) {
+                        var index = i + 1;
+                        clientsTable.row.add([
+                            index,
+                            data[i].userId, 
+                            data[i].username, 
+                            data[i].eik
+                        ]).draw(false);
+                        });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+            }
         });
-  })
+    };
+  });
+
+  // create client button
+  $('#createClient').click( function () {
+    var data = clientsTable.row('.selected').data();
+    if (data == null) {
+        alert("No row is selected! Please select a row before updating!");
+    }
+    // reset previously entered passwords
+    data.push(null);
+    data.push(null);
+    var clientsForm = $('#clientsDetailsForm-update');
+
+    var userId = data[1];
+    var username = data[2];
+    var eik = data[3];
+    var password1 = data[4];
+    var password2 = data[5];
+
+    $("#clientUserId").val(userId);
+    $("#clientUsername").val(username);
+    $("#clientEik").val(eik);
+    $("#clientPassword1").val(password1);
+    $("#clientPassword2").val(password2);
+
+    $(clientsForm).show();
+});
 });
