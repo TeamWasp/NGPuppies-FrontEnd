@@ -610,11 +610,72 @@
             <tbody id="bills-table-rows"></tbody>
         </table>
         <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="deleteBill">Delete</button>
-                <button class="btn m-1 btn-secondary" id="updateBill">Update</button>
                 <button class="btn m-1 btn-secondary" id="createBill">Create</button>
         </div>
     </div> 
+<!-- Create form - bills -->
+<div id="billsDetailsForm-create" class="container">
+
+        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Bills Details - Create Form</div>
+                </div>
+                <div class="panel-body" >
+                    <form method="post" action=".">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <form  class="form-horizontal" method="post" >
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billServiceId-create" maxlength="30" name="service" placeholder="Enter service id" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create" maxlength="30" name="subscriberPhoneNumber" placeholder="Enter phone #" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Start date</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billStartDate-create" maxlength="30" name="startDate" placeholder="Enter start date" style="margin-bottom: 10px" type="date" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> End date</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billEndDate-create" maxlength="30" name="country" placeholder="Enter end date" style="margin-bottom: 10px" type="date" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Amount</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billAmount-create" maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Currency</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billCurrency-create" maxlength="30" name="currency" placeholder="Enter currency" style="margin-bottom: 10px" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="billSubmitButton-create" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="billCancelButton-create" />
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Services table container -->
     <div id="services-table-container" class="container mt-5">

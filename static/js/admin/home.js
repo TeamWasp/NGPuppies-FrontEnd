@@ -3,7 +3,7 @@ $(document).ready(function() {
   /*-------------------------------------------- INITIAL SETUP ------------------------------------------------------*/
   // hide components (forms & tables) at page load
   $(function() {
-    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create, #adminsDetailsForm-update, #adminsDetailsForm-create, #subscribersDetailsForm-update, #subscribersDetailsForm-create')
+    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create, #adminsDetailsForm-update, #adminsDetailsForm-create, #subscribersDetailsForm-update, #subscribersDetailsForm-create, #billsDetailsForm-create')
         .hide();
   });
 
@@ -857,7 +857,6 @@ $(document).ready(function() {
     });
 
     // CREATE SUBSCRIBER DTO CONSTRUCTOR
-    // CREATE ADMIN CONSTRUCTOR
     var SubscriberDto = function(phoneNumber, firstName, lastName, egn, country, city, zipCode, street, bank) {
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
@@ -1010,6 +1009,95 @@ $(document).ready(function() {
                                 data[i].bank.username
                             ]).draw(false);
                         });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+            }
+        });
+    };
+  });
+  /*-------------------------------------------- BILLS TABLE ------------------------------------------------------*/
+
+    // CREATE BILL DTO CONSTRUCTOR
+    var billDto = function(billId, serviceId, phoneNumber, startDate, endDate, amount, currency) {
+        this.billId = billId;
+        this.serviceId = serviceId;
+        this.phoneNumber = phoneNumber;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
+        this.currency = currency;
+        }
+
+    // BILL TABLE CREATE BUTTON
+    $('#createBill').click( function () {
+    var data = [];
+    data.push(null);
+    var defaultVal = data[0];
+    $("#billServiceId-create").val(defaultVal);
+    $("#billSubscriberPhoneNumber-create").val(defaultVal);
+    $("#billStartDate-create").val(defaultVal);
+    $("#billEndDate-create").val(defaultVal);
+    $("#billAmount-create").val(defaultVal);
+    $("#billCurrency-create").val(defaultVal);
+    $('#billsDetailsForm-create').show();
+    });
+
+    // BILL TABLE CREATE FORM - CANCEL BUTTON
+    $('#billCancelButton-create').click( function () {
+    $("#billsDetailsForm-create").hide();
+    });
+
+    // BILL TABLE CREATE FORM - SUBMIT BUTTON
+    $('#billSubmitButton-create').click( function () {
+    var newServiceId = $("#billServiceId-create").val();
+    var newPhoneNumber = $("#billSubscriberPhoneNumber-create").val();
+    var newStartDate = $("#billStartDate-create").val();
+    var newEndDate = $("#billEndDate-create").val();
+    var newAmount = $("#billAmount-create").val();
+    var newCurrency = $("#billCurrency-create").val();
+
+    if (newPhoneNumber == "" || newServiceId == "" || newStartDate == "" || newEndDate == "" || newAmount == "" || newCurrency == "") {
+        alert("Please fill all fields in form to continue!");
+    } else {
+        var newBillDto = new billDto(1, newServiceId, newPhoneNumber, newStartDate, newEndDate, newAmount, newCurrency);
+
+        $.ajax({
+            type: 'POST',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/bills/createBill',
+            contentType: "application/json",
+            data: JSON.stringify(newBillDto),
+
+            success: function(data) {
+            $("#bills-table-rows").empty();
+            $("#billsDetailsForm-create").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: { withCredentials: false },
+                    url: "http://localhost:8080/api/admin/bills/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        billsTable.clear();
+
+                        $.each(data, function (i) {
+                            billsTable.row.add([
+                                data[i].billId, 
+                                data[i].service.name,
+                                data[i].subscriber.phoneNumber,
+                                data[i].subscriber.firstName + " " + data[i].subscriber.lastName,
+                                data[i].startDate,
+                                data[i].endDate,
+                                data[i].amount,
+                                data[i].currency.currency,
+                                data[i].paymentDate
+                              ]).draw(false);
+                          });
                     },
                     error: function () {
                         console.log("Unsuccessful request");
