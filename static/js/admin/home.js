@@ -842,74 +842,89 @@ $(document).ready(function() {
             var street = data[8];
             var bank = data[9];
 
-            $("#adminUserId-update").val(userId);
-            $("#adminUsername-update").val(username);
-            $("#adminEmailAddress-update").val(emailAddress);
-            $("#adminPassword1-update").val(password1);
-            $("#adminPassword2-update").val(password2);
+            $("#subscriberPhoneNumber-update").val(phoneNumber);
+            $("#subscriberFirstName-update").val(firstName);
+            $("#subscriberLastName-update").val(lastName);
+            $("#subscriberEgn-update").val(egn);
+            $("#subscriberCountry-update").val(country);
+            $("#subscriberCity-update").val(city);
+            $("#subscriberZipCode-update").val(zipCode);
+            $("#subscriberStreet-update").val(street);
+            $("#subscriberBank-update").val(bank);
 
-            $(adminsForm).show();
+            $(subscribersForm).show();
         }
     });
 
+    // CREATE SUBSCRIBER DTO CONSTRUCTOR
     // CREATE ADMIN CONSTRUCTOR
-    var Admin = function(id, username, password, emailAddress) {
-    this.id = id;
-    this.username = username;
-    this.password = password;
-    this.emailAddress = emailAddress;
-    }
+    var SubscriberDto = function(phoneNumber, firstName, lastName, egn, country, city, zipCode, street, bank) {
+        this.phoneNumber = phoneNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.egn = egn;
+        this.country = country;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.street = street;
+        this.bank = bank;
+        }
 
-    // ADMIN TABLE UPDATE FORM - CANCEL BUTTON
-    $('#adminsCancelButton-update').click( function () {
-    $("#adminsDetailsForm-update").hide();
+    // SUBSCRIBER TABLE UPDATE FORM - CANCEL BUTTON
+    $('#subscriberCancelButton-update').click( function () {
+    $("#subscribersDetailsForm-update").hide();
     });
 
-    // ADMIN TABLE UPDATE FORM - SUBMIT BUTTON
-    $('#adminSubmitButton-update').click( function () {
-    var userId = $("#adminUserId-update").val();
-    var updatedUsername = $("#adminUsername-update").val();
-    var updatedEmailAddress = $("#adminEmailAddress-update").val();
-    var updatedPassword = $("#adminPassword1-update").val();
-    var updatedPassword2 = $("#adminPassword2-update").val();
+    // SUBSCRIBER TABLE UPDATE FORM - SUBMIT BUTTON
+    $('#subscriberSubmitButton-update').click( function () {
+    var updatedPhoneNumber = $("#subscriberPhoneNumber-update").val();
+    var updatedFirstName = $("#subscriberFirstName-update").val();
+    var updatedLastName = $("#subscriberLastName-update").val();
+    var updatedEgn = $("#subscriberEgn-update").val();
+    var updatedCountry = $("#subscriberCountry-update").val();
+    var updatedCity = $("#subscriberCity-update").val();
+    var updatedZipCode = $("#subscriberZipCode-update").val();
+    var updatedStreet = $("#subscriberStreet-update").val();
+    var updatedBank = $("#subscriberBank-update").val();
 
-    if (updatedPassword != null && updatedPassword != updatedPassword2) {
-        alert("Password mismatch! Please check password before making changes!");
-    } else {
-        var updatedAdmin = new Admin(userId, updatedUsername, updatedPassword, updatedEmailAddress);
+    var updateSubscriberDto = new SubscriberDto(updatedPhoneNumber, updatedFirstName, updatedLastName, updatedEgn, updatedCountry, updatedCity, updatedZipCode, updatedStreet, updatedBank);
 
         $.ajax({
             type: 'PUT',
             xhrFields: { withCredentials: false },
-            url: 'http://localhost:8080/api/admin/admins/updateAdmin/' + userId,
+            url: 'http://localhost:8080/api/admin/subscribers/updateSubscriber/' + updatedPhoneNumber,
             contentType: "application/json",
-            data: JSON.stringify(updatedAdmin),
+            data: JSON.stringify(updateSubscriberDto),
 
             success: function() {
-            $("#admins-table-rows").empty();
-            $("#adminsDetailsForm-update").hide();
+            $("#subscribers-table-rows").empty();
+            $("#subscribersDetailsForm-update").hide();
                 $.ajax({
                     // crossOrigin: true,
                     // crossDomain: true,
                     type: 'GET',
                     xhrFields: { withCredentials: false },
-                    url: "http://localhost:8080/api/admin/admins/",
+                    url: "http://localhost:8080/api/admin/subscribers/",
                     contentType: "application/json",
                     dataType: "json",
                     success: function (data) {
-                        adminsTable.clear();
+                    subscribersTable.clear();
 
-                        $.each(data, function (i) {
+                    $.each(data, function (i) {
                         var index = i + 1;
-                        adminsTable.row.add([
+                        subscribersTable.row.add([
                             index,
-                            data[i].userId, 
-                            data[i].username, 
-                            data[i].emailAddress,
-                            data[i].enabled,
-                            data[i].firstLogin
+                            data[i].phoneNumber, 
+                            data[i].firstName,
+                            data[i].lastName,
+                            data[i].egn,
+                            data[i].address.country,
+                            data[i].address.city,
+                            data[i].address.zipCode,
+                            data[i].address.street,
+                            data[i].bank.username
                         ]).draw(false);
-                        });
+                    });
                     },
                     error: function () {
                         console.log("Unsuccessful request");
@@ -917,25 +932,29 @@ $(document).ready(function() {
                 });
             }
         });
-      };
     });
 
-    // ADMIN TABLE CREATE BUTTON
-    $('#createAdmin').click( function () {
-    $("#adminsDetailsForm-update").hide();
+    // SUBSCRIBER TABLE CREATE BUTTON
+    $('#createSubscriber').click( function () {
+    $("#subscribersDetailsForm-update").hide();
     var data = [];
     data.push(null);
     var defaultVal = data[0];
-    $("#adminUsername-create").val(defaultVal);
-    $("#adminEmailAddress-create").val(defaultVal);
-    $("#adminPassword1-create").val(defaultVal);
-    $("#adminPassword2-create").val(defaultVal);
-    $('#adminsDetailsForm-create').show();
+    $("#subscriberPhoneNumber-create").val(defaultVal);
+    $("#subscriberFirstName-create").val(defaultVal);
+    $("#subscriberLastName-create").val(defaultVal);
+    $("#subscriberEgn-create").val(defaultVal);
+    $("#subscriberCountry-create").val(defaultVal);
+    $("#subscriberCity-create").val(defaultVal);
+    $("#subscriberZipCode-create").val(defaultVal);
+    $("#subscriberStreet-create").val(defaultVal);
+    $("#subscriberBank-create").val(defaultVal);
+    $('#subscribersDetailsForm-create').show();
     });
 
-    // ADMIN TABLE CREATE FORM - CANCEL BUTTON
-    $('#adminCancelButton-create').click( function () {
-    $("#adminsDetailsForm-create").hide();
+    // SUBSCRIBER TABLE CREATE FORM - CANCEL BUTTON
+    $('#subscriberCancelButton-create').click( function () {
+    $("#subscribersDetailsForm-create").hide();
     });
 
     // ADMIN TABLE CREATE FORM - SUBMIT BUTTON
