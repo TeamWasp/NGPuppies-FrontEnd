@@ -10,3 +10,10 @@ table {
     data-order: '[[ 1, "asc" ]]';
     data-page-length: '2';
 }
+.select-form{
+
+    width: 60%;
+    padding: 1px;
+    font-size: 18px;
+    margin-left: 36%;
+}
