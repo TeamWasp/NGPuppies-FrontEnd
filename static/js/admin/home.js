@@ -7,6 +7,14 @@ $(document).ready(function () {
             .hide();
     });
 
+    $(document).ajaxError(function(){
+
+        alert("Session Expired");
+        window.location.replace("http://localhost:8081/login.html");
+
+
+    })
+
     /* DataTables https://datatables.net/manual/installation */
 
     // set tables to work with DataTable api and make them preserve the last set state (ordering)
