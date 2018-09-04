@@ -957,52 +957,58 @@ $(document).ready(function() {
     $("#subscribersDetailsForm-create").hide();
     });
 
-    // ADMIN TABLE CREATE FORM - SUBMIT BUTTON
-    $('#adminSubmitButton-create').click( function () {
-    var newUsername = $("#adminUsername-create").val();
-    var newEmailAddress = $("#adminEmailAddress-create").val();
-    var newPassword = $("#adminPassword1-create").val();
-    var newPassword2 = $("#adminPassword2-create").val();
+    // SUBSCRIBER TABLE CREATE FORM - SUBMIT BUTTON
+    $('#subscriberSubmitButton-create').click( function () {
+    var newPhoneNumber = $("#subscriberPhoneNumber-create").val();
+    var newFirstName = $("#subscriberFirstName-create").val();
+    var newLastName = $("#subscriberLastName-create").val();
+    var newEgn = $("#subscriberEgn-create").val();
+    var newCountry = $("#subscriberCountry-create").val();
+    var newCity = $("#subscriberCity-create").val();
+    var newZipCode = $("#subscriberZipCode-create").val();
+    var newStreet = $("#subscriberStreet-create").val();
+    var newBank = $("#subscriberBank-create").val();
 
-    if (newUsername == "" || newEmailAddress == "" || newPassword == "" || newPassword2 == "") {
+    if (newPhoneNumber == "" || newFirstName == "" || newLastName == "" || newEgn == "" || newCountry == "" || newCity == "" || newZipCode == "" || newStreet == "" || newBank == "") {
         alert("Please fill all fields in form to continue!");
-    } else if (newPassword != null && newPassword != newPassword2) {
-        alert("Password mismatch! Please check password before making changes!");
     } else {
-        // set user id to 1, which used only for constructor building
-        var newAdmin = new Admin(1, newUsername, newPassword, newEmailAddress);
+        var newSubscriberDto = new SubscriberDto(newPhoneNumber, newFirstName, newLastName, newEgn, newCountry, newCity, newZipCode, newStreet, newBank);
 
         $.ajax({
             type: 'POST',
             xhrFields: { withCredentials: false },
-            url: 'http://localhost:8080/api/admin/admins/createAdmin',
+            url: 'http://localhost:8080/api/admin/subscribers/createSubscriber',
             contentType: "application/json",
-            data: JSON.stringify(newAdmin),
+            data: JSON.stringify(newSubscriberDto),
 
             success: function(data) {
-            $("#admins-table-rows").empty();
-            $("#adminsDetailsForm-create").hide();
+            $("#subscribers-table-rows").empty();
+            $("#subscribersDetailsForm-create").hide();
                 $.ajax({
                     // crossOrigin: true,
                     // crossDomain: true,
                     type: 'GET',
                     xhrFields: { withCredentials: false },
-                    url: "http://localhost:8080/api/admin/admins/",
+                    url: "http://localhost:8080/api/admin/subscribers/",
                     contentType: "application/json",
                     dataType: "json",
                     success: function (data) {
-                        adminsTable.clear();
+                        subscribersTable.clear();
 
                         $.each(data, function (i) {
-                        var index = i + 1;
-                        adminsTable.row.add([
-                            index,
-                            data[i].userId, 
-                            data[i].username, 
-                            data[i].emailAddress,
-                            data[i].enabled,
-                            data[i].firstLogin
-                        ]).draw(false);
+                            var index = i + 1;
+                            subscribersTable.row.add([
+                                index,
+                                data[i].phoneNumber, 
+                                data[i].firstName,
+                                data[i].lastName,
+                                data[i].egn,
+                                data[i].address.country,
+                                data[i].address.city,
+                                data[i].address.zipCode,
+                                data[i].address.street,
+                                data[i].bank.username
+                            ]).draw(false);
                         });
                     },
                     error: function () {
