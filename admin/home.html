@@ -24,13 +24,28 @@
 </head>
 
 <body id="admin">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-light bg-dark">
         <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Admin Module</h1>
-        <!-- Button to collapses the navbar when resizing website -->
+        <div class="form-inline">
+                <button id="personalDetailsButton" class="btn m-1 btn-primary">Personal Details <span class="sr-only"></span></button>
+                <button id="clientsButton" class="btn m-1 btn-secondary">Clients <span class="sr-only"></span></button>
+                <button id="adminsButton" class="btn m-1 btn-secondary">Admins <span class="sr-only"></span></button>
+                <button id="allUsersButton" class="btn m-1 btn-secondary">All Users <span class="sr-only"></span></button>
+                <button id="subscribersButton" class="btn m-1 btn-secondary">Subscribers <span class="sr-only"></span></button>
+                <button id="billsButton" class="btn m-1 btn-secondary">Bills <span class="sr-only"></span></button>
+                <button id="servicesButton" class="btn m-1 btn-secondary">Services <span class="sr-only"></span></button>
+                <button id="logoutButton" class="btn btn-md m-1 btn-danger">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                </button>
+        </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Admin Module</h1>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Navigation bar -->
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="menu" class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -63,7 +78,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Personal details form -->
     <div id="personalDetailsForm" class="container">

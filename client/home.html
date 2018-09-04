@@ -24,13 +24,26 @@
 </head>
 
 <body id="client">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-light bg-dark">
+            <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Client Module</h1>
+            <div class="form-inline">
+                    <button id="subscribersButton" class="btn m-1 btn-primary">Subscribers <span class="sr-only"></span></button>
+                    <button id="billsButton" class="btn m-1 btn-secondary">Unpaid Bills <span class="sr-only"></span></button>
+                    <button id="topTenSubscribersButton" class="btn m-1 btn-secondary">Top 10 subscribers</button>
+                    <button id="paidBillsButton" class="btn m-1 btn-secondary">Paid bills</button>
+                    <button id="logoutButton" class="btn btn-md m-1 btn-danger">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </button>
+            </div>
+        </nav>  
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Client Module</h1>
-        <!-- Button to collapses the navbar when resizing website -->
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Navigation bar -->
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="menu" class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -39,7 +52,7 @@
                 <li class="nav-item active">
                     <button id="billsButton" class="btn m-1 btn-secondary">Unpaid Bills<span class="sr-only"></span></button>
                 </li>
-                 <!-- Dropdown menu -->
+                 
                 <li class="nav-item">
                     <div class="dropdown m-1">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +73,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Subscribers table container -->
     <div id="subscribers-table-container" class="container mt-5">
