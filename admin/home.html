@@ -428,254 +428,254 @@
                 <button class="btn m-1 btn-secondary" id="createSubscriber">Create</button>
         </div>
     </div> 
-<!-- Update form - subscribers -->
-<div id="subscribersDetailsForm-update" class="container">
+    <!-- Update form - subscribers -->
+    <div id="subscribersDetailsForm-update" class="container">
 
-        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">Subscriber Details - Update Form</div>
-                </div>
-                <div class="panel-body" >
-                    <form method="post" action=".">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                        <form  class="form-horizontal" method="post" >
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Subscriber Details - Update Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
                             <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <div class="form-group required">
-                                    <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                        <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                                        <div class="controls col-md-8 ">
+                                            <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-update" maxlength="10" name="phoneNumber" disabled style="margin-bottom: 10px" type="text" />
+                                        </div>
+                                    </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-update" maxlength="10" name="phoneNumber" disabled style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberFirstName-update" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
                                     </div>
                                 </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberFirstName-update" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberLastName-update" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberEgn-update" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberCountry-update" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberCity-update" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberZipCode-update" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberStreet-update" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberBank-update" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="aab controls col-md-4 "></div>
-                                <div class="controls col-md-8 ">
-                                    <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-update" />
-                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-update" />
-                                </div>
-                            </div>
-                        </form>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Create form - subscribers -->
-<div id="subscribersDetailsForm-create" class="container">
-
-        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">Subscriber Details - Create Form</div>
-                </div>
-                <div class="panel-body" >
-                    <form method="post" action=".">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                        <form  class="form-horizontal" method="post" >
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <div class="form-group required">
-                                    <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create" maxlength="10" name="phoneNumber" placeholder="Enter phone number" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberLastName-update" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
                                     </div>
                                 </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberEgn-update" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberLastName-create" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCountry-update" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberEgn-create" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCity-update" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberCountry-create" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberZipCode-update" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberCity-create" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberStreet-update" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberBank-update" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberStreet-create" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-update" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-update" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="subscriberBank-create" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="aab controls col-md-4 "></div>
-                                <div class="controls col-md-8 ">
-                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-create" />
-                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-create" />
-                                </div>
-                            </div>
+                            </form>
                         </form>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    <!-- Bills table container -->
-    <div id="bills-table-container" class="container mt-5">
-        <table id="bills-table" class="display table table-striped table-hover" style="width:100%">
-            <caption>All bills table</caption>
-            <thead class="thead-light">
-                <tr>
-                <th scope="col">Bill id</th>
-                <th scope="col">Service</th>
-                <th scope="col">Subscriber's phone #</th>
-                <th scope="col">Subscriber's full name</th>
-                <th scope="col">Start date</th>
-                <th scope="col">End date</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Payment date</th>
-                </tr>
-            </thead>
-            <tbody id="bills-table-rows"></tbody>
-        </table>
-        <div class="btn-group">
-                <button class="btn m-1 btn-secondary" id="createBill">Create</button>
-        </div>
-    </div> 
-<!-- Create form - bills -->
-<div id="billsDetailsForm-create" class="container">
+    <!-- Create form - subscribers -->
+    <div id="subscribersDetailsForm-create" class="container">
 
-        <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <div class="panel-title">Bills Details - Create Form</div>
-                </div>
-                <div class="panel-body" >
-                    <form method="post" action=".">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                        <form  class="form-horizontal" method="post" >
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Subscriber Details - Create Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
                             <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billServiceId-create" maxlength="30" name="service" placeholder="Enter service id" style="margin-bottom: 10px" type="text" />
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                        <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
+                                        <div class="controls col-md-8 ">
+                                            <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create" maxlength="10" name="phoneNumber" placeholder="Enter phone number" style="margin-bottom: 10px" type="text" />
+                                        </div>
+                                    </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create" maxlength="30" name="subscriberPhoneNumber" placeholder="Enter phone #" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberLastName-create" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Start date</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billStartDate-create" maxlength="30" name="startDate" placeholder="Enter start date" style="margin-bottom: 10px" type="date" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberEgn-create" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> End date</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billEndDate-create" maxlength="30" name="country" placeholder="Enter end date" style="margin-bottom: 10px" type="date" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCountry-create" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Amount</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billAmount-create" maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCity-create" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Currency</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="billCurrency-create" maxlength="30" name="currency" placeholder="Enter currency" style="margin-bottom: 10px" type="text" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="aab controls col-md-4 "></div>
-                                <div class="controls col-md-8 ">
-                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="billSubmitButton-create" />
-                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="billCancelButton-create" />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberStreet-create" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="subscriberBank-create" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="subscriberSubmitButton-create" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="subscriberCancelButton-create" />
+                                    </div>
+                                </div>
+                            </form>
                         </form>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+        <!-- Bills table container -->
+        <div id="bills-table-container" class="container mt-5">
+            <table id="bills-table" class="display table table-striped table-hover" style="width:100%">
+                <caption>All bills table</caption>
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col">Bill id</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Subscriber's phone #</th>
+                    <th scope="col">Subscriber's full name</th>
+                    <th scope="col">Start date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Payment date</th>
+                    </tr>
+                </thead>
+                <tbody id="bills-table-rows"></tbody>
+            </table>
+            <div class="btn-group">
+                    <button class="btn m-1 btn-secondary" id="createBill">Create</button>
+            </div>
+        </div> 
+    <!-- Create form - bills -->
+    <div id="billsDetailsForm-create" class="container">
+
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Bills Details - Create Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billServiceId-create" maxlength="30" name="service" placeholder="Enter service id" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create" maxlength="30" name="subscriberPhoneNumber" placeholder="Enter phone #" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Start date</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billStartDate-create" maxlength="30" name="startDate" placeholder="Enter start date" style="margin-bottom: 10px" type="date" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> End date</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billEndDate-create" maxlength="30" name="country" placeholder="Enter end date" style="margin-bottom: 10px" type="date" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Amount</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billAmount-create" maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Currency</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="billCurrency-create" maxlength="30" name="currency" placeholder="Enter currency" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="billSubmitButton-create" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="billCancelButton-create" />
+                                    </div>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Services table container -->
     <div id="services-table-container" class="container mt-5">
@@ -695,8 +695,78 @@
                 <button class="btn m-1 btn-secondary" id="createService">Create</button>
         </div>
     </div> 
-        
+    <!-- Create form - service -->
+    <div id="servicesDetailsForm-create" class="container">
 
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Service Details - Create Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service name</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="serviceName-create" maxlength="30" name="name" placeholder="Enter service name" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="serviceSubmitButton-create" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-create" />
+                                    </div>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update form - service -->
+    <div id="servicesDetailsForm-update" class="container">
+
+            <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Service Details - Update Form</div>
+                    </div>
+                    <div class="panel-body" >
+                        <form method="post" action=".">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <form  class="form-horizontal" method="post" >
+                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="serviceServiceId-update" maxlength="30" name="service" placeholder="Enter service id" disabled style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service name</label>
+                                    <div class="controls col-md-8 ">
+                                        <input class="input-md  textinput textInput form-control" id="serviceName-update" maxlength="30" name="name" placeholder="Enter service name" style="margin-bottom: 10px" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="aab controls col-md-4 "></div>
+                                    <div class="controls col-md-8 ">
+                                        <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="serviceSubmitButton-update" />
+                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-update" />
+                                    </div>
+                                </div>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="footer" class="container marketing fixed-bottom">
         <div>
             <div>

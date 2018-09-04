@@ -3,7 +3,7 @@ $(document).ready(function() {
   /*-------------------------------------------- INITIAL SETUP ------------------------------------------------------*/
   // hide components (forms & tables) at page load
   $(function() {
-    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create, #adminsDetailsForm-update, #adminsDetailsForm-create, #subscribersDetailsForm-update, #subscribersDetailsForm-create, #billsDetailsForm-create')
+    $('#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create, #adminsDetailsForm-update, #adminsDetailsForm-create, #subscribersDetailsForm-update, #subscribersDetailsForm-create, #billsDetailsForm-create, #servicesDetailsForm-update, #servicesDetailsForm-create')
         .hide();
   });
 
@@ -1098,6 +1098,174 @@ $(document).ready(function() {
                                 data[i].paymentDate
                               ]).draw(false);
                           });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+            }
+        });
+    };
+  });
+
+/*-------------------------------------------- SERVICES TABLE ------------------------------------------------------*/
+  // SERVICES TABLE - DELETE BUTTON
+  $('#deleteService').click( function () {
+    $("#servicesDetailsForm-create").hide();
+    $("#servicesDetailsForm-update").hide();
+        var data = servicesTable.row('.selected').data();
+        if (data == null) {
+            alert("No row is selected! Please select a row before deleting!");
+        } else {
+            servicesTable.row('.selected').remove().draw( false );
+            var serviceId = data[0];
+            
+            $.ajax({
+                type: 'DELETE',
+                xhrFields: { withCredentials: false },
+                url: 'http://localhost:8080/api/admin/services/deleteService/' + serviceId,
+                contentType: "application/json",
+                data: JSON.stringify(serviceId),
+          
+                success: function(data) {
+                  alert('Service successfully deleted!');
+                }
+              });
+        }
+  });
+
+  // SERVICES TABLE - UPDATE BUTTON
+  $('#updateService').click( function () {
+        $("#servicesDetailsForm-create").hide();
+        var data = servicesTable.row('.selected').data();
+        if (data == null) {
+            alert("No row is selected! Please select a row before updating!");
+        } else {
+            // reset previously entered passwords
+            data.push(null);
+            data.push(null);
+            var servicesForm = $('#servicesDetailsForm-update');
+
+            var serviceId = data[0];
+            var serviceName = data[1];
+
+            $("#serviceServiceId-update").val(serviceId);
+            $("#serviceName-update").val(serviceName);
+
+            $(servicesForm).show();
+        }
+  });
+
+  // CREATE SERVICE CONSTRUCTOR
+  var Service = function(id, name) {
+    this.id = id;
+    this.name = name;
+    }
+
+    // SERVICE TABLE UPDATE FORM - CANCEL BUTTON
+  $('#serviceCancelButton-update').click( function () {
+    $("#servicesDetailsForm-update").hide();
+  });
+
+    // SERVICE TABLE UPDATE FORM - SUBMIT BUTTON
+  $('#serviceSubmitButton-update').click( function () {
+    var serviceId = $("#serviceServiceId-update").val();
+    var updatedServiceName = $("#serviceName-update").val();
+
+    if (updatedServiceName == "") {
+        alert("Please fill service name!");
+    } else {
+        var updatedService = new Service(serviceId, updatedServiceName);
+
+        $.ajax({
+            type: 'PUT',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/services/updateService/' + serviceId,
+            contentType: "application/json",
+            data: JSON.stringify(updatedService),
+    
+            success: function(data) {
+              $("#services-table-rows").empty();
+              $("#servicesDetailsForm-update").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: { withCredentials: false },
+                    url: "http://localhost:8080/api/admin/services/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        servicesTable.clear();
+    
+                        $.each(data, function (i) {
+                        servicesTable.row.add([
+                            data[i].serviceId, 
+                            data[i].name
+                        ]).draw(false);
+                        });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+            }
+        });
+    };
+  });
+
+  // SERVICE TABLE CREATE BUTTON
+  $('#createService').click( function () {
+    $("#servicesDetailsForm-update").hide();
+      var data = [];
+      data.push(null);
+      var defaultVal = data[0];
+      $("#serviceName-create").val(defaultVal);
+      $('#servicesDetailsForm-create').show();
+  });
+
+  // SERVICE TABLE CREATE FORM - CANCEL BUTTON
+  $('#serviceCancelButton-create').click( function () {
+    $("#servicesDetailsForm-create").hide();
+  });
+
+    // SERVICE TABLE CREATE FORM - SUBMIT BUTTON
+  $('#serviceSubmitButton-create').click( function () {
+    var newServiceName = $("#serviceName-create").val();
+
+    if (newServiceName == "") {
+        alert("Please fill service name to continue!");
+    } else {
+        // set service id to 1, which used only for constructor building
+        var newService = new Service(1, newServiceName);
+
+        $.ajax({
+            type: 'POST',
+            xhrFields: { withCredentials: false },
+            url: 'http://localhost:8080/api/admin/services/createService',
+            contentType: "application/json",
+            data: JSON.stringify(newService),
+    
+            success: function(data) {
+              $("#services-table-rows").empty();
+              $("#servicesDetailsForm-create").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: { withCredentials: false },
+                    url: "http://localhost:8080/api/admin/services/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        servicesTable.clear();
+    
+                        $.each(data, function (i) {
+                        servicesTable.row.add([
+                            data[i].serviceId, 
+                            data[i].name
+                        ]).draw(false);
+                        });
                     },
                     error: function () {
                         console.log("Unsuccessful request");
