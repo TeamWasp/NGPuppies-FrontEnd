@@ -346,12 +346,12 @@
                     <div class="panel-title">Admin Details - Create Form</div>
                 </div>
                 <div class="panel-body" >
-                    <form  class="form-horizontal" data-toggle="validator" role="form">
+                    <form  class="form-horizontal" role="form" id="admin-create-form">
                         <div class="form-group required">
                             <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="adminUsername-create" minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
-                                <small id="adminUsername-create-help" class="form-text text-muted">Username should be between 8 and 15 characters long.</small>
+                                <small id="adminUsername-create-help" class="help-block small">Username should be between 8 and 15 characters long.</small>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -378,8 +378,7 @@
                         <div class="form-group">
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="adminSubmitButton-create" />
-                                or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-create" />
+                                <button type="submit" id="adminSubmitButton-create" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -589,7 +588,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
+                                    <label for="id_username" class="control-label col-md-4"> Bank</label>
                                     <div class="controls col-md-8 ">
                                         <input class="input-md  textinput textInput form-control" id="subscriberBank-create" minlength="8" maxlength="15" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
                                         <small id="subscriberBank-create-help" class="form-text text-muted">Bank should be present in clients table and be entered exactly as written there.</small>

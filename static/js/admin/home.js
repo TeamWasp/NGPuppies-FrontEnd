@@ -27,6 +27,9 @@ $(document).ready(function() {
     stateSave: true,
     responsive: true
   });
+
+  $('#admin-create-form').validator()
+
   //set default values in columns when value is undefined/ empty
   var allUsersTable = $('#all-users-table').DataTable({
     "columns": [
@@ -709,7 +712,9 @@ $(document).ready(function() {
     $("#adminPassword1-create").val(defaultVal);
     $("#adminPassword2-create").val(defaultVal);
     $('#adminsDetailsForm-create').show();
+    $('#admin-create-form').validator('update');
     });
+    
 
     // ADMIN TABLE CREATE FORM - CANCEL BUTTON
     $('#adminCancelButton-create').click( function () {
