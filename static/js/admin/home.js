@@ -1059,8 +1059,11 @@ $(document).ready(function() {
     var newAmount = $("#billAmount-create").val();
     var newCurrency = $("#billCurrency-create").val();
 
+    console.log(newServiceId + " " + newPhoneNumber + " " + newStartDate + "endDate: " + newEndDate + ", " + newAmount + " " + newCurrency);
     if (newPhoneNumber == "" || newServiceId == "" || newStartDate == "" || newEndDate == "" || newAmount == "" || newCurrency == "") {
         alert("Please fill all fields in form to continue!");
+    } else if (newAmount < 0) {
+        alert("Please enter a positive number for amount!")
     } else {
         var newBillDto = new billDto(1, newServiceId, newPhoneNumber, newStartDate, newEndDate, newAmount, newCurrency);
 

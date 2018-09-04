@@ -150,38 +150,33 @@
                         <div class="panel-title">Client Details - Update Form</div>
                     </div>
                     <div class="panel-body" >
-                        <form method="post" action=".">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <form  class="form-horizontal" method="post" >
-                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            <form  class="form-horizontal" data-toggle="validator" role="form" method="post" >
                                 <div class="form-group required">
-                                        <label for="id_userId" class="control-label col-md-4  requiredField"> User id</label>
-                                        <div class="controls col-md-8 ">
-                                            <input class="input-md  textinput textInput form-control" id="clientUserId-update" maxlength="10" name="userId" disabled style="margin-bottom: 10px" type="text" />
-                                        </div>
-                                    </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
+                                    <label for="clientUsername-update" class="control-label col-md-4  requiredField"> Username</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="clientUsername-update" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="clientUsername-update" minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                        <small id="clientUsername-update-help" class="form-text text-muted">Username should be between 8 and 15 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label for="id_email" class="control-label col-md-4  requiredField"> EIK</label>
+                                    <label for="clientEik-update" class="control-label col-md-4  requiredField"> EIK</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md emailinput form-control" id="clientEik-update" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md emailinput form-control" id="clientEik-update" minlength="10" and maxlength="15" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
+                                        <small id="clientEik-update-help" class="form-text text-muted">EIK should be between 10 and 15 digits long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
+                                    <label for="clientPassword1-update" class="control-label col-md-4  requiredField">Password</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword1-update" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                        <input class="input-md textinput textInput form-control" id="clientPassword1-update" data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                        <div class="help-block small">Password should be at least 8 characters long.</div>
                                     </div>
                                 </div>
                                 <div class="form-group required">
-                                    <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
+                                    <label for="clientPassword2-update" class="control-label col-md-4  requiredField"> Re:password</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword2-update" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                        <input class="input-md textinput textInput form-control" id="clientPassword2-update" data-match="#clientPassword1-update"  data-match-error="Password mismatch!" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                        <div class="help-block with-errors small"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -207,42 +202,42 @@
                         <div class="panel-title">Client Details - Create Form</div>
                     </div>
                     <div class="panel-body" >
-                        <form method="post" action=".">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <form  class="form-horizontal" method="post" >
-                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="clientUsername-create" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                        <form  class="form-horizontal" data-toggle="validator" role="form" method="post" >
+                            <div class="form-group required">
+                                <label for="clientUsername-create" class="control-label col-md-4  requiredField"> Username</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="clientUsername-create" minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                    <small id="clientUsername-create-help" class="form-text text-muted">Username should be between 8 and 15 characters long.</small>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_email" class="control-label col-md-4  requiredField"> EIK</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md emailinput form-control" id="clientEik-create" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="clientEik-create" class="control-label col-md-4  requiredField"> EIK</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md emailinput form-control" id="clientEik-create" minlength="10" maxlength="15" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px" type="text" />
+                                    <small id="clientEik-create-help" class="form-text text-muted">EIK should be between 10 and 15 digits long.</small>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword1-create" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="clientPassword1-create" class="control-label col-md-4  requiredField">Password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="clientPassword1-create" data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                    <div class="help-block small">Password should be at least 8 characters long.</div>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md textinput textInput form-control" id="clientPassword2-create" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="clientPassword2-create" class="control-label col-md-4  requiredField"> Re:password</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md textinput textInput form-control" id="clientPassword2-create" data-match="#clientPassword1-create"  data-match-error="Password mismatch!" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                    <div class="help-block with-errors small"></div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="aab controls col-md-4 "></div>
-                                    <div class="controls col-md-8 ">
-                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="clientSubmitButton-create" />
-                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="clientCancelButton-create" />
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="submit" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="clientSubmitButton-create" />
+                                    or <input type="submit" name="Cancel" value="Cancel" class="btn btn btn-primary" id="clientCancelButton-create" />
                                 </div>
-                            </form>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -280,48 +275,42 @@
                     <div class="panel-title">Admin Details - Update Form</div>
                 </div>
                 <div class="panel-body" >
-                    <form method="post" action=".">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                        <form  class="form-horizontal" method="post" >
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <div class="form-group required">
-                                    <label for="id_userId" class="control-label col-md-4  requiredField"> User id</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="adminUserId-update" maxlength="10" name="userId" disabled style="margin-bottom: 10px" type="text" />
-                                    </div>
-                                </div>
+                    <form  class="form-horizontal" data-toggle="validator" role="form" method="post" >
                             <div class="form-group required">
                                 <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="adminUsername-update" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                    <input class="input-md  textinput textInput form-control" id="adminUsername-update" minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                    <small id="adminUsername-update-help" class="form-text text-muted">Username should be between 8 and 15 characters long.</small>
                                 </div>
                             </div>
                             <div class="form-group required">
-                                <label for="id_email" class="control-label col-md-4  requiredField"> E-mail</label>
+                                <label for="adminEmailAddress-update" class="control-label col-md-4  requiredField"> E-mail</label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md emailinput form-control" id="adminEmailAddress-update" name="id_email" placeholder="Enter e-mail" style="margin-bottom: 10px" type="email" />
+                                    <input class="input-md emailinput form-control" id="adminEmailAddress-update" name="id_eik" placeholder="Enter e-mail" data-error="E-mail invalid!" style="margin-bottom: 10px" type="email" />
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="form-group required">
-                                <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
+                                <label for="adminPassword1-update" class="control-label col-md-4  requiredField">Password</label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="adminPassword1-update" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                    <input class="input-md textinput textInput form-control" id="adminPassword1-update" data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                    <div class="help-block small">Password should be at least 8 characters long.</div>
                                 </div>
                             </div>
                             <div class="form-group required">
-                                <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
+                                <label for="adminPassword2-update" class="control-label col-md-4  requiredField"> Re:password</label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="adminPassword2-update" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                    <input class="input-md textinput textInput form-control" id="adminPassword2-update" data-match="#adminPassword1-update"  data-match-error="Password mismatch!" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                    <div class="help-block with-errors small"></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="aab controls col-md-4 "></div>
-                                <div class="controls col-md-8 ">
-                                    <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info" id="adminSubmitButton-update" />
-                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-update" />
-                                </div>
+                        <div class="form-group">
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                                <input type="submit" name="Change" value="Change" class="btn btn-primary btn btn-info" id="adminSubmitButton-update" />
+                                or <input type="submit" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-update" />
                             </div>
-                        </form>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -337,42 +326,42 @@
                     <div class="panel-title">Admin Details - Create Form</div>
                 </div>
                 <div class="panel-body" >
-                    <form method="post" action=".">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                        <form  class="form-horizontal" method="post" >
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <div class="form-group required">
-                                <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md  textinput textInput form-control" id="adminUsername-create" maxlength="30" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
-                                </div>
+                    <form  class="form-horizontal" data-toggle="validator" role="form" method="post" >
+                        <div class="form-group required">
+                            <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md  textinput textInput form-control" id="adminUsername-create" minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px" type="text" />
+                                <small id="adminUsername-create-help" class="form-text text-muted">Username should be between 8 and 15 characters long.</small>
                             </div>
-                            <div class="form-group required">
-                                <label for="id_email" class="control-label col-md-4  requiredField"> E-mail</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md emailinput form-control" id="adminEmailAddress-create" name="id_eik" placeholder="Enter e-mail" style="margin-bottom: 10px" type="email" />
-                                </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="adminEmailAddress-create" class="control-label col-md-4  requiredField"> E-mail</label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md emailinput form-control" id="adminEmailAddress-create" name="id_eik" placeholder="Enter e-mail" data-error="E-mail invalid!" style="margin-bottom: 10px" type="email" />
+                                <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group required">
-                                <label for="id_password1" class="control-label col-md-4  requiredField">Password</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="adminPassword1-create" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
-                                </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="adminPassword1-create" class="control-label col-md-4  requiredField">Password</label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md textinput textInput form-control" id="adminPassword1-create" data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                <div class="help-block small">Password should be at least 8 characters long.</div>
                             </div>
-                            <div class="form-group required">
-                                <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password</label>
-                                <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="adminPassword2-create" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
-                                </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="adminPassword2-create" class="control-label col-md-4  requiredField"> Re:password</label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md textinput textInput form-control" id="adminPassword2-create" data-match="#adminPassword1-create"  data-match-error="Password mismatch!" name="password2" placeholder="Confirm password" style="margin-bottom: 10px" type="password" />
+                                <div class="help-block with-errors small"></div>
                             </div>
-                            <div class="form-group">
-                                <div class="aab controls col-md-4 "></div>
-                                <div class="controls col-md-8 ">
-                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="adminSubmitButton-create" />
-                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-create" />
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                                <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="adminSubmitButton-create" />
+                                or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="adminCancelButton-create" />
                             </div>
-                        </form>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -518,62 +507,68 @@
                         <div class="panel-title">Subscriber Details - Create Form</div>
                     </div>
                     <div class="panel-body" >
-                        <form method="post" action=".">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
                             <form  class="form-horizontal" method="post" >
-                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
                                 <div class="form-group required">
                                         <label for="id_userId" class="control-label col-md-4  requiredField"> Phone numer </label>
                                         <div class="controls col-md-8 ">
-                                            <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create" maxlength="10" name="phoneNumber" placeholder="Enter phone number" style="margin-bottom: 10px" type="text" />
+                                            <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create" minlength="8" maxlength="16" name="phoneNumber" placeholder="Enter phone number" style="margin-bottom: 10px" type="text" />
+                                            <small id="subscriberPhoneNumber-create-help" class="form-text text-muted">Phone number should be between 8 and 15 digits long.</small>
                                         </div>
                                     </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> First name</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create" maxlength="30" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create" minlength="3" maxlength="10" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberFirstName-create-help" class="form-text text-muted">First name should be between 3 and 10 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Last name</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberLastName-create" maxlength="30" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberLastName-create" minlength="4" maxlength="16" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberLastName-create-help" class="form-text text-muted">Last name should be between 4 and 16 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> EGN</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberEgn-create" maxlength="30" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberEgn-create" minlength="10" maxlength="10" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberEgn-create-help" class="form-text text-muted">EGN should be a 10-digit number.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Country</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberCountry-create" maxlength="30" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCountry-create" minlength="5" maxlength="20" name="country" placeholder="Enter country" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberCountry-create-help" class="form-text text-muted">Country should be between 5 and 20 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> City</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberCity-create" maxlength="30" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberCity-create" maxlength="15" name="city" placeholder="Enter city" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberCity-create-help" class="form-text text-muted">City should be between 4 and 15 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Postal code</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create" maxlength="30" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create" minlength="4" maxlength="4" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberZipCode-create-help" class="form-text text-muted">Postal code should be a 4-digit number.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Street address</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberStreet-create" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberStreet-create" minlength="10" maxlength="30" name="street" placeholder="Enter street address" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberStreet-create-help" class="form-text text-muted">Street address should be between 10 and 30 characters long.</small>
                                     </div>
                                 </div>
                                 <div class="form-group required">
                                     <label for="id_username" class="control-label col-md-4  requiredField"> Bank</label>
                                     <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="subscriberBank-create" maxlength="30" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                        <input class="input-md  textinput textInput form-control" id="subscriberBank-create" minlength="8" maxlength="15" name="bank" placeholder="Enter bank" style="margin-bottom: 10px" type="text" />
+                                        <small id="subscriberBank-create-help" class="form-text text-muted">Bank should be present in clients table and be entered exactly as written there.</small>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -584,7 +579,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -622,54 +616,54 @@
                         <div class="panel-title">Bills Details - Create Form</div>
                     </div>
                     <div class="panel-body" >
-                        <form method="post" action=".">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <form  class="form-horizontal" method="post" >
-                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billServiceId-create" maxlength="30" name="service" placeholder="Enter service id" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                        <form  class="form-horizontal" method="post" >
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billServiceId-create" maxlength="30" name="service" placeholder="Enter service id" style="margin-bottom: 10px" type="text" />
+                                    <small id="billServiceId-create-help" class="form-text text-muted">Service id should be a digit #.</small>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create" maxlength="30" name="subscriberPhoneNumber" placeholder="Enter phone #" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create" maxlength="30" name="subscriberPhoneNumber" placeholder="Enter phone #" style="margin-bottom: 10px" type="text" />
+                                    <small id="billSubscriberPhoneNumber-create-help" class="form-text text-muted">Subscriber's phone number should contain 9-15 digits and be present in subscriber's table.</small>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Start date</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billStartDate-create" maxlength="30" name="startDate" placeholder="Enter start date" style="margin-bottom: 10px" type="date" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Start date</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billStartDate-create" maxlength="30" name="startDate" placeholder="Enter start date" style="margin-bottom: 10px" type="date" />
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> End date</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billEndDate-create" maxlength="30" name="country" placeholder="Enter end date" style="margin-bottom: 10px" type="date" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> End date</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billEndDate-create" maxlength="30" name="country" placeholder="Enter end date" style="margin-bottom: 10px" type="date" />
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Amount</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billAmount-create" maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Amount</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billAmount-create" maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px" type="text" />
+                                    <small id="billAmount-create-help" class="form-text text-muted">Amount should be in original currency.</small>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Currency</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="billCurrency-create" maxlength="30" name="currency" placeholder="Enter currency" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Currency</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="billCurrency-create" maxlength="30" name="currency" placeholder="Enter currency" style="margin-bottom: 10px" type="text" />
+                                    <small id="billCurrency-create-help" class="form-text text-muted">Currency should be a 3-digit code and be present in currencies table.</small>
                                 </div>
-                                <div class="form-group">
-                                    <div class="aab controls col-md-4 "></div>
-                                    <div class="controls col-md-8 ">
-                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="billSubmitButton-create" />
-                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="billCancelButton-create" />
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="billSubmitButton-create" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="billCancelButton-create" />
                                 </div>
-                            </form>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -704,24 +698,21 @@
                         <div class="panel-title">Service Details - Create Form</div>
                     </div>
                     <div class="panel-body" >
-                        <form method="post" action=".">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            <form  class="form-horizontal" method="post" >
-                                <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                                <div class="form-group required">
-                                    <label for="id_username" class="control-label col-md-4  requiredField"> Service name</label>
-                                    <div class="controls col-md-8 ">
-                                        <input class="input-md  textinput textInput form-control" id="serviceName-create" maxlength="30" name="name" placeholder="Enter service name" style="margin-bottom: 10px" type="text" />
-                                    </div>
+                        <form  class="form-horizontal" method="post" >
+                            <div class="form-group required">
+                                <label for="id_username" class="control-label col-md-4  requiredField"> Service name</label>
+                                <div class="controls col-md-8 ">
+                                    <input class="input-md  textinput textInput form-control" id="serviceName-create" maxlength="30" name="name" placeholder="Enter service name" style="margin-bottom: 10px" type="text" />
+                                    <small id="serviceName-create-help" class="form-text text-muted">Service name should be at least 4 characters long.</small>
                                 </div>
-                                <div class="form-group">
-                                    <div class="aab controls col-md-4 "></div>
-                                    <div class="controls col-md-8 ">
-                                        <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="serviceSubmitButton-create" />
-                                        or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-create" />
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="aab controls col-md-4 "></div>
+                                <div class="controls col-md-8 ">
+                                    <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="serviceSubmitButton-create" />
+                                    or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-create" />
                                 </div>
-                            </form>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -792,6 +783,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.0/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.4.0/r-2.2.2/rg-1.0.3/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 <!-- Local js-->
 <script src="../static/js/admin/home.js"></script>
 </body>
