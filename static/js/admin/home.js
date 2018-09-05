@@ -1280,9 +1280,6 @@ $(document).ready(function () {
 
         // reset here else submit active if form filled but instead of submit, you press create button again
         $("#bill-create-form").get(0).reset();
-
-        console.log($("#billStartDate-create").val().length + ", " + $("#billStartDate-create").val());
-        $("#billSubmitButton-create").prop("disabled", true);
         if ($("#billStartDate-create").val().length > 0 &&
             $("#billEndDate-create").val().length > 0 &&
             $("#billAmount-create").val().length > 0) {
@@ -1485,9 +1482,6 @@ $(document).ready(function () {
         if (data == null) {
             alert("No row is selected! Please select a row before updating!");
         } else {
-            // reset previously entered passwords
-            data.push(null);
-            data.push(null);
             var servicesForm = $('#servicesDetailsForm-update');
 
             var serviceId = data[0];
@@ -1495,6 +1489,28 @@ $(document).ready(function () {
 
             $("#serviceServiceId-update").val(serviceId);
             $("#serviceName-update").val(serviceName);
+
+
+            // validates that again in case update is press again before submit/ cancel form
+            $("#service-update-form").validator('validate');
+            if ($("#serviceServiceId-update").val().length > 0 &&
+                $("#serviceName-update").val().length > 0) {
+
+                $("#serviceSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#serviceSubmitButton-update").prop("disabled", true);
+            }
+
+            $("#serviceServiceId-update, #serviceName-update").change(function () {
+            if ($("#serviceServiceId-update").val().length > 0 &&
+                $("#serviceName-update").val().length > 0) {
+
+                $("#serviceSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#serviceSubmitButton-update").prop("disabled", true);
+            }
+            });
+            $('#service-update-form').validator('update');
 
             $(servicesForm).show();
         }
@@ -1571,10 +1587,25 @@ $(document).ready(function () {
     // SERVICE TABLE CREATE BUTTON
     $('#createService').click(function () {
         $("#servicesDetailsForm-update").hide();
-        var data = [];
-        data.push(null);
-        var defaultVal = data[0];
-        $("#serviceName-create").val(defaultVal);
+
+        // reset here else submit active if form filled but instead of submit, you press create button again
+        $("#service-create-form").get(0).reset();
+
+        if ($("#serviceName-create").val().length > 0) {
+            $("#serviceSubmitButton-create").prop("disabled", false);
+        } else {
+            $("#serviceSubmitButton-create").prop("disabled", true);
+        }
+        $("#serviceName-create").change(function () {
+            if ($("#serviceName-create").val().length > 0) {
+                $("#serviceSubmitButton-create").prop("disabled", false);
+            } else {
+                $("#serviceSubmitButton-create").prop("disabled", true);
+            }
+        });
+
+        $('#service-create-form').validator('update');
+
         $('#servicesDetailsForm-create').show();
     });
 

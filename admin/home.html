@@ -855,22 +855,22 @@
                     <div class="panel-title">Service Details - Create Form</div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" data-toggle="validator" role="form">
+                    <form class="form-horizontal" role="form" id="service-create-form">
                         <div class="form-group required">
                             <label for="serviceName-create" class="control-label col-md-4  requiredField"> Service name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="serviceName-create"
                                     minlength="4" maxlength="4" name="name" placeholder="Enter service name" style="margin-bottom: 10px"
                                     type="text" />
-                                <small id="serviceName-create-help" class="form-text text-muted">Service name should be
+                                <small id="serviceName-create-help" class="help-block small">Service name should be
                                     4 digits long.</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="serviceSubmitButton-create" />
-                                or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-create" />
+                                    <button type="submit" id="serviceSubmitButton-create" class="btn btn-primary">Submit</button>
+                                    or <button type="submit" id="serviceCancelButton-create" class="btn btn-primary">Cancel</button>
                             </div>
                         </div>
                     </form>
@@ -888,9 +888,9 @@
                     <div class="panel-title">Service Details - Update Form</div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" data-toggle="validator" role="form">
+                    <form class="form-horizontal" role="form" id="service-update-form">
                         <div class="form-group required">
-                            <label for="id_username" class="control-label col-md-4  requiredField"> Service id </label>
+                            <label for="serviceServiceId-update" class="control-label col-md-4  requiredField"> Service id </label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="serviceServiceId-update"
                                     name="service" placeholder="Enter service id" disabled style="margin-bottom: 10px"
@@ -898,21 +898,20 @@
                             </div>
                         </div>
                         <div class="form-group required">
-                            <label for="id_username" class="control-label col-md-4  requiredField"> Service name</label>
+                            <label for="serviceName-update" class="control-label col-md-4  requiredField"> Service name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="serviceName-update"
                                     minlength="4" maxlength="4" name="name" placeholder="Enter service name" style="margin-bottom: 10px"
                                     type="text" />
-                                <small id="serviceName-update-help" class="form-text text-muted">Service name should be
+                                <small id="serviceName-update-help" class="help-block small">Service name should be
                                     4 digits long.</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input type="button" name="Change" value="Change" class="btn btn-primary btn btn-info"
-                                    id="serviceSubmitButton-update" />
-                                or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="serviceCancelButton-update" />
+                                    <button type="submit" id="serviceSubmitButton-update" class="btn btn-primary">Submit</button>
+                                    or <button type="submit" id="serviceCancelButton-update" class="btn btn-primary">Cancel</button>
                             </div>
                         </div>
                     </form>
