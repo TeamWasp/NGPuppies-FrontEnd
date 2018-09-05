@@ -44,11 +44,9 @@ $(document).ready(function() {
 
     $(document).ajaxError(function () {
 
-      alert("Session Expired");
-      window.location.replace("http://localhost:8081/login.html");
-
-
-    })
+      alert("Error occurred during ajax request!");
+      //window.location.replace("http://localhost:8081/login.html");
+    });
 
     $(function() {
       $('#subscribers-table-container, #bills-table-container, #top-10-subscribers-table-container, #paid-bills-table-container')

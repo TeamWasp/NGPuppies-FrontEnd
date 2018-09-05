@@ -93,6 +93,12 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" id="personal-details-update-form">
                         <div id="div_id_username" class="form-group required">
+                            <label for="personalDetailsUserId-update" class="control-label col-md-4  requiredField"> User id</label>
+                            <div class="controls col-md-8 ">
+                                <input class="input-md  textinput textInput form-control" id="personalDetailsUserId-update" disabled style="margin-bottom: 10px" type="text" />
+                            </div>
+                        </div>
+                        <div id="div_id_username" class="form-group required">
                             <label for="personalDetailsUsername-update" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="personalDetailsUsername-update" minlength="8" maxlength="15"
@@ -107,7 +113,7 @@
                                 <input class="input-md emailinput form-control" id="personalDetailsEmail-update" name="email" placeholder="Your current email address"
                                     style="margin-bottom: 10px" type="email" />
                                 <small id="personalDetailsEmail-update-help" class="help-block small">E-mail should be in valid form.</small>
-                                <div class="help-block with-errors"></div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div id="div_id_password1" class="form-group required">

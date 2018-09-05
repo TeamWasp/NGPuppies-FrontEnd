@@ -9,9 +9,9 @@ $(document).ready(function () {
 
     $(document).ajaxError(function () {
 
-        alert("Session Expired");
-        window.location.replace("http://localhost:8081/login.html");
-    })
+        alert("Error occurred during ajax request!");
+        //window.location.replace("http://localhost:8081/login.html");
+    });
 
     // set logged user and role in footer printRole
     var printUsername = localStorage.getItem("username");
@@ -114,9 +114,55 @@ $(document).ready(function () {
     /*-------------------------------------------- LOADING MODULE TABLES ------------------------------------------------------*/
     $("#personalDetailsButton").click(function (ev) {
         ev.preventDefault;
-
         $(".container").not("#footer").hide();
-        $("#personalDetailsForm").show();
+
+        var username = localStorage.getItem("username");
+
+        $.ajax({
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: "http://localhost:8080/api/admin/admins?username=" + username,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                $("#personalDetailsUserId-update").val(data.userId);
+                $("#personalDetailsUsername-update").val(data.username);
+                $("#personalDetailsEmail-update").val(data.emailAddress);   
+                $("personalDetailsPassword1-update").val(null);           
+                $("personalDetailsPassword2-update").val(null);
+
+                // validates that again in case update is press again before submit/ cancel form
+                $("#personal-details-update-form").validator('validate');
+                if ($("#personalDetailsUsername-update").val().length > 0 &&
+                    $("#personalDetailsEmail-update").val().length > 0) {
+                    $("#personalDetailsSubmitButton-update").prop("disabled", false);
+                } else {
+                    $("#personalDetailsSubmitButton-update").prop("disabled", true);
+                }
+
+                $("#personalDetailsUserId-update, #personalDetailsUsername-update, #personalDetailsEmail-update").change(function () {
+                    if ($("#personalDetailsUserId-update").val().length > 0 &&
+                        $("#personalDetailsUsername-update").val().length > 0 &&
+                        $("#personalDetailsEmail-update").val().length > 0) {
+
+                        $("#personalDetailsSubmitButton-update").prop("disabled", false);
+                    } else {
+                        $("#personalDetailsSubmitButton-update").prop("disabled", true);
+                    }
+                });
+
+                $('#personal-details-update-form').validator('update');
+
+                $("#personalDetailsForm").show();
+            },
+            error: function () {
+                console.log("Unsuccessful request");
+            }
+        });
     });
 
     $("#clientsButton").click(function (ev) {
@@ -1684,5 +1730,92 @@ $(document).ready(function () {
                 }
             });
         };
+    });
+
+    /*------------------------------------------ PERSONAL DETAILS FORM --------------------------------------------------------------------*/
+
+    // ADMIN PERSONAL DETAILS OF LOGGED USER - UPDATE FORM - CANCEL BUTTON
+    $('#personalDetailsCancelButton-update').click(function () {
+        $('#personal-details-update-form').submit(function (event) {
+            event.preventDefault();
+        });
+
+        var userId = $("#personalDetailsUserId-update").val();
+        
+        $.ajax({
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: "http://localhost:8080/api/admin/admins/" + userId,
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                $("#personalDetailsUserId-update").val(data.userId);
+                $("#personalDetailsUsername-update").val(data.username);
+                $("#personalDetailsEmail-update").val(data.emailAddress);   
+                $("personalDetailsPassword1-update").val(null);           
+                $("personalDetailsPassword2-update").val(null);
+            },
+            error: function () {
+                console.log("Unsuccessful request");
+            }
+        });
+
+        // validates that again in case update is press again before submit/ cancel form
+        $("#personal-details-update-form").validator('validate');
+        if ($("#personalDetailsUserId-update").val().length > 0 &&
+            $("#personalDetailsUsername-update").val().length > 0 &&
+            $("#personalDetailsEmail-update").val().length > 0) {
+            $("#personalDetailsSubmitButton-update").prop("disabled", false);
+        } else {
+            $("#personalDetailsSubmitButton-update").prop("disabled", true);
+        }
+
+        $("#personalDetailsUserId-update, #personalDetailsUsername-update, #personalDetailsEmail-update").change(function () {
+            if ($("#personalDetailsUserId-update").val().length > 0 &&
+                $("#personalDetailsUsername-update").val().length > 0 &&
+                $("#personalDetailsEmail-update").val().length > 0) {
+
+                $("#personalDetailsSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#personalDetailsSubmitButton-update").prop("disabled", true);
+            }
+        });
+
+        $('#personal-details-update-form').validator('update');
+    });
+
+    // ADMIN PERSONAL DETAILS UPDATE FORM - SUBMIT BUTTON
+    $('#personalDetailsSubmitButton-update').click(function () {
+        $('#admin-update-form').submit(function (event) {
+            event.preventDefault();
+        });
+
+        var userId = $("#personalDetailsUserId-update").val();
+        var updatedUsername = $("#personalDetailsUsername-update").val();
+        var updatedEmailAddress = $("#personalDetailsEmailAddress-update").val();
+        var updatedPassword = $("#personalDetailsPassword1-update").val();
+        var updatedPassword2 = $("#personalDetailsPassword2-update").val();
+
+        var updatedAdminPD = new Admin(userId, updatedUsername, updatedPassword, updatedEmailAddress);
+
+        $.ajax({
+            type: 'PUT',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: 'http://localhost:8080/api/admin/admins/updateAdmin/' + userId,
+            contentType: "application/json",
+            data: JSON.stringify(updatedAdminPD),
+
+            success: function () {
+                localStorage.clear();
+                window.location.replace("http://localhost:8081/login.html");
+                alert("You have been logged out due to profile change. Please log in to continue!");
+            }
+        });
     });
 });
