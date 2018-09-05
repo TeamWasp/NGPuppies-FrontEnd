@@ -2,7 +2,8 @@
     color: yellow;
 }
 
-#personalDetailsForm, #clients-table-container, #admins-table-container, #allUsersMenu, #subscribersMenu, #billsMenu, #servicesMenu {
+/* #personalDetailsForm, #clients-table-container, #admins-table-container, #allUsersMenu, #subscribersMenu, #billsMenu, #servicesMenu */
+#personalDetailsForm, #clients-table-container, #admins-table-container, #all-users-table-container, #subscribers-table-container, #bills-table-container, #services-table-container, #clientsDetailsForm-update, #clientsDetailsForm-create, #adminsDetailsForm-update, #adminsDetailsForm-create, #subscribersDetailsForm-update, #subscribersDetailsForm-create, #billsDetailsForm-create, #servicesDetailsForm-update, #servicesDetailsForm-create {
     display: none;
 }
 
@@ -10,6 +11,7 @@ table {
     data-order: '[[ 1, "asc" ]]';
     data-page-length: '2';
 }
+
 .select-form{
 
     width: 60%;

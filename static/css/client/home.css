@@ -1,3 +1,7 @@
 #client .h1 {
     color: yellow;
 }
+
+#subscribers-table-container, #bills-table-container, #top-10-subscribers-table-container, #paid-bills-table-container{
+    display: none;
+}
