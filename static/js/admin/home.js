@@ -470,6 +470,23 @@ $(document).ready(function () {
             $("#clientPassword1-update").val(password1);
             $("#clientPassword2-update").val(password2);
 
+            // validates that again in case update is press again before submit/ cancel form
+            $("#client-update-form").validator('validate');
+            if ($("#clientUsername-update").val().length > 0 &&
+            $("#clientEik-update").val().length > 0) {
+            $("#clientSubmitButton-update").prop("disabled", false);
+        } else {
+            $("#clientSubmitButton-update").prop("disabled", true);
+        }
+        $("#clientUsername-update, #clientEik-update").change(function () {
+            if ($("#clientUsername-update").val().length > 0 &&
+                $("#clientEik-update").val().length > 0) {
+                $("#clientSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#clientSubmitButton-update").prop("disabled", true);
+            }
+        });
+        $('#client-update-form').validator('update');
             $(clientsForm).show();
         }
     });
@@ -492,6 +509,9 @@ $(document).ready(function () {
 
     // CLIENT TABLE UPDATE FORM - SUBMIT BUTTON
     $('#clientSubmitButton-update').click(function () {
+        $('#client-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         var userId = $("#clientUserId-update").val();
         var updatedUsername = $("#clientUsername-update").val();
         var updatedEik = $("#clientEik-update").val();
@@ -551,6 +571,9 @@ $(document).ready(function () {
     $('#createClient').click(function () {
         $("#clientsDetailsForm-update").hide();
 
+        // reset here else submit active if form filled but instead of submit, you press create button again
+        $("#client-create-form").get(0).reset();
+
         if ($("#clientUsername-create").val().length > 0 &&
             $("#clientEik-create").val().length > 0 &&
             $("#clientPassword1-create").val().length > 0 &&
@@ -569,7 +592,7 @@ $(document).ready(function () {
                 $("#clientSubmitButton-create").prop("disabled", true);
             }
         });
-        $("#client-create-form").get(0).reset();
+
         $('#client-create-form').validator('update');
         $('#clientsDetailsForm-create').show();
     });
@@ -584,6 +607,9 @@ $(document).ready(function () {
 
     // CLIENT TABLE CREATE FORM - SUBMIT BUTTON
     $('#clientSubmitButton-create').click(function () {
+        $('#client-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         var newUsername = $("#clientUsername-create").val();
         var newEik = $("#clientEik-create").val();
         var newPassword = $("#clientPassword1-create").val();
@@ -694,6 +720,8 @@ $(document).ready(function () {
             $("#adminPassword1-update").val(password1);
             $("#adminPassword2-update").val(password2);
 
+            // validates that again in case update is press again before submit/ cancel form
+            $("#admin-update-form").validator('validate');
             if ($("#adminUserId-update").val().length > 0 &&
             $("#adminUsername-update").val().length > 0 &&
             $("#adminEmailAddress-update").val().length > 0) {
@@ -734,6 +762,9 @@ $(document).ready(function () {
 
     // ADMIN TABLE UPDATE FORM - SUBMIT BUTTON
     $('#adminSubmitButton-update').click(function () {
+        $('#admin-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         var userId = $("#adminUserId-update").val();
         var updatedUsername = $("#adminUsername-update").val();
         var updatedEmailAddress = $("#adminEmailAddress-update").val();
@@ -794,6 +825,10 @@ $(document).ready(function () {
     // ADMIN TABLE CREATE BUTTON
     $('#createAdmin').click(function () {
         $("#adminsDetailsForm-update").hide();
+
+        // reset here else submit active if form filled but instead of submit, you press create button again
+        $("#admin-create-form").get(0).reset();
+
         if ($("#adminUsername-create").val().length > 0 &&
             $("#adminEmailAddress-create").val().length > 0 &&
             $("#adminPassword1-create").val().length > 0 &&
@@ -812,7 +847,6 @@ $(document).ready(function () {
                 $("#adminSubmitButton-create").prop("disabled", true);
             }
         });
-        $("#admin-create-form").get(0).reset();
         $('#adminsDetailsForm-create').show();
         $('#admin-create-form').validator('update');
     });
@@ -966,7 +1000,39 @@ $(document).ready(function () {
             $("#subscriberStreet-update").val(street);
             $("#subscriberBank-update").val(bank);
 
-            $(subscribersForm).show();
+            // validates that again in case update is press again before submit/ cancel form
+            $("#subscriber-update-form").validator('validate');
+            if ($("#subscriberPhoneNumber-update").val().length > 0 &&
+            $("#subscriberFirstName-update").val().length > 0 &&
+            $("#subscriberLastName-update").val().length > 0 &&
+            $("#subscriberEgn-update").val().length > 0 &&
+            $("#subscriberCountry-update").val().length > 0 &&
+            $("#subscriberCity-update").val().length > 0 &&
+            $("#subscriberZipCode-update").val().length > 0 &&
+            $("#subscriberStreet-update").val().length > 0 &&
+            $("#subscriberBank-update").val().length >0) {
+            $("#subscriberSubmitButton-update").prop("disabled", false);
+        } else {
+            $("#subscriberSubmitButton-update").prop("disabled", true);
+        }
+
+        $("#subscriberPhoneNumber-update, #subscriberFirstName-update, #subscriberLastName-update, #subscriberEgn-update, #subscriberCountry-update, #subscriberCity-update, #subscriberZipCode-update, #subscriberStreet-update, #subscriberBank-update").change(function () {
+            if ($("#subscriberPhoneNumber-update").val().length > 0 &&
+            $("#subscriberFirstName-update").val().length > 0 &&
+            $("#subscriberLastName-update").val().length > 0 &&
+            $("#subscriberEgn-update").val().length > 0 &&
+            $("#subscriberCountry-update").val().length > 0 &&
+            $("#subscriberCity-update").val().length > 0 &&
+            $("#subscriberZipCode-update").val().length > 0 &&
+            $("#subscriberStreet-update").val().length > 0 &&
+            $("#subscriberBank-update").val().length >0) {
+                $("#subscriberSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#subscriberSubmitButton-update").prop("disabled", true);
+            }
+        });
+        $('#subscriber-update-form').validator('update');
+        $(subscribersForm).show();
         }
     });
 
@@ -993,6 +1059,9 @@ $(document).ready(function () {
 
     // SUBSCRIBER TABLE UPDATE FORM - SUBMIT BUTTON
     $('#subscriberSubmitButton-update').click(function () {
+        $('#subscriber-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         var updatedPhoneNumber = $("#subscriberPhoneNumber-update").val();
         var updatedFirstName = $("#subscriberFirstName-update").val();
         var updatedLastName = $("#subscriberLastName-update").val();
@@ -1057,17 +1126,39 @@ $(document).ready(function () {
     // SUBSCRIBER TABLE CREATE BUTTON
     $('#createSubscriber').click(function () {
         $("#subscribersDetailsForm-update").hide();
-        var data = [];
-        data.push(null);
-        var defaultVal = data[0];
-        $("#subscriberPhoneNumber-create").val(defaultVal);
-        $("#subscriberFirstName-create").val(defaultVal);
-        $("#subscriberLastName-create").val(defaultVal);
-        $("#subscriberEgn-create").val(defaultVal);
-        $("#subscriberCountry-create").val(defaultVal);
-        $("#subscriberCity-create").val(defaultVal);
-        $("#subscriberZipCode-create").val(defaultVal);
-        $("#subscriberStreet-create").val(defaultVal);
+
+        // reset here else submit active if form filled but instead of submit, you press create button again
+        $("#subscriber-create-form").get(0).reset();
+
+        if ($("#subscriberPhoneNumber-create").val().length > 0 &&
+            $("#subscriberFirstName-create").val().length > 0 &&
+            $("#subscriberLastName-create").val().length > 0 &&
+            $("#subscriberEgn-create").val().length > 0 &&
+            $("#subscriberCountry-create").val().length > 0 &&
+            $("#subscriberCity-create").val().length > 0 &&
+            $("#subscriberZipCode-create").val().length > 0 &&
+            $("#subscriberStreet-create").val().length) {
+            $("#subscriberSubmitButton-create").prop("disabled", false);
+        } else {
+            $("#subscriberSubmitButton-create").prop("disabled", true);
+        }
+        $("#subscriberPhoneNumber-create, #subscriberFirstName-create, #subscriberLastName-create, #subscriberEgn-create, #subscriberCountry-create, #subscriberCity-create, #subscriberZipCode-create, #subscriberStreet-create").change(function () {
+            if ($("#subscriberPhoneNumber-create").val().length > 0 &&
+                $("#subscriberFirstName-create").val().length > 0 &&
+                $("#subscriberLastName-create").val().length > 0 &&
+                $("#subscriberEgn-create").val().length > 0 &&
+                $("#subscriberCountry-create").val().length > 0 &&
+                $("#subscriberCity-create").val().length > 0 &&
+                $("#subscriberZipCode-create").val().length > 0 &&
+                $("#subscriberStreet-create").val().length) {
+                $("#subscriberSubmitButton-create").prop("disabled", false);
+            } else {
+                $("#subscriberSubmitButton-create").prop("disabled", true);
+            }
+        });
+        
+        $('#subscriber-create-form').validator('update');
+
         $.ajax({
             // crossOrigin: true,
             // crossDomain: true,
@@ -1104,6 +1195,9 @@ $(document).ready(function () {
 
     // SUBSCRIBER TABLE CREATE FORM - SUBMIT BUTTON
     $('#subscriberSubmitButton-create').click(function () {
+        $('#subscriber-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         var newPhoneNumber = $("#subscriberPhoneNumber-create").val();
         var newFirstName = $("#subscriberFirstName-create").val();
         var newLastName = $("#subscriberLastName-create").val();
@@ -1171,9 +1265,9 @@ $(document).ready(function () {
     /*-------------------------------------------- BILLS TABLE ------------------------------------------------------*/
 
     // CREATE BILL DTO CONSTRUCTOR
-    var billDto = function (billId, serviceId, phoneNumber, startDate, endDate, amount, currency) {
+    var billDto = function (billId, service, phoneNumber, startDate, endDate, amount, currency) {
         this.billId = billId;
-        this.serviceId = serviceId;
+        this.service = service;
         this.phoneNumber = phoneNumber;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -1183,15 +1277,103 @@ $(document).ready(function () {
 
     // BILL TABLE CREATE BUTTON
     $('#createBill').click(function () {
-        var data = [];
-        data.push(null);
-        var defaultVal = data[0];
-        $("#billServiceId-create").val(defaultVal);
-        $("#billSubscriberPhoneNumber-create").val(defaultVal);
-        $("#billStartDate-create").val(defaultVal);
-        $("#billEndDate-create").val(defaultVal);
-        $("#billAmount-create").val(defaultVal);
-        $("#billCurrency-create").val(defaultVal);
+
+        // reset here else submit active if form filled but instead of submit, you press create button again
+        $("#bill-create-form").get(0).reset();
+
+        console.log($("#billStartDate-create").val().length + ", " + $("#billStartDate-create").val());
+        $("#billSubmitButton-create").prop("disabled", true);
+        if ($("#billStartDate-create").val().length > 0 &&
+            $("#billEndDate-create").val().length > 0 &&
+            $("#billAmount-create").val().length > 0) {
+            $("#billSubmitButton-create").prop("disabled", false);
+        } else {
+            $("#billSubmitButton-create").prop("disabled", true);
+        }
+        $("#billStartDate-create, #billEndDate-create, #billAmount-create").change(function () {
+            if ($("#billStartDate-create").val().length > 0 &&
+            $("#billEndDate-create").val().length > 0 &&
+            $("#billAmount-create").val().length > 0) {
+                $("#billSubmitButton-create").prop("disabled", false);
+            } else {
+                $("#billSubmitButton-create").prop("disabled", true);
+            }
+        });
+
+        $('#bill-create-form').validator('update');
+
+        $.ajax({
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: "http://localhost:8080/api/admin/services/",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var options = '';
+                $.each(data, function (i) {
+                    options += '<option class="form-control form-control-sm" value="' + data[i].name + '">' + data[i].name + '</option>';
+
+
+                });
+                $('#bill-service-select').html(options);
+            },
+            error: function () {
+                console.log("Unsuccessful request");
+            }
+        });
+
+        $.ajax({
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: "http://localhost:8080/api/admin/subscribers/",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var options = '';
+                $.each(data, function (i) {
+                    options += '<option class="form-control form-control-sm" value="' + data[i].phoneNumber + '">' + data[i].phoneNumber + '</option>';
+
+
+                });
+                $('#bill-subscriber-select').html(options);
+            },
+            error: function () {
+                console.log("Unsuccessful request");
+            }
+        });
+
+        $.ajax({
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: "http://localhost:8080/api/admin/currencies/",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                var options = '';
+                $.each(data, function (i) {
+                    options += '<option class="form-control form-control-sm" value="' + data[i].currency + '">' + data[i].currency + '</option>';
+
+
+                });
+                $('#bill-currency-select').html(options);
+            },
+            error: function () {
+                console.log("Unsuccessful request");
+            }
+        });
+
         $('#billsDetailsForm-create').show();
     });
 
@@ -1205,19 +1387,20 @@ $(document).ready(function () {
 
     // BILL TABLE CREATE FORM - SUBMIT BUTTON
     $('#billSubmitButton-create').click(function () {
-        var newServiceId = $("#billServiceId-create").val();
-        var newPhoneNumber = $("#billSubscriberPhoneNumber-create").val();
+        $('#bill-create-form').submit(function (event) {
+            event.preventDefault();
+        });
+        var newService = $("#bill-service-select").val();
+        var newPhoneNumber = $("#bill-subscriber-select").val();
         var newStartDate = $("#billStartDate-create").val();
         var newEndDate = $("#billEndDate-create").val();
         var newAmount = $("#billAmount-create").val();
-        var newCurrency = $("#billCurrency-create").val();
+        var newCurrency = $("#bill-currency-select").val();
 
-        if (newPhoneNumber == "" || newServiceId == "" || newStartDate == "" || newEndDate == "" || newAmount == "" || newCurrency == "") {
-            alert("Please fill all fields in form to continue!");
-        } else if (newAmount < 0) {
+        if (newAmount < 0) {
             alert("Please enter a positive number for amount!")
         } else {
-            var newBillDto = new billDto(1, newServiceId, newPhoneNumber, newStartDate, newEndDate, newAmount, newCurrency);
+            var newBillDto = new billDto(1, newService, newPhoneNumber, newStartDate, newEndDate, newAmount, newCurrency);
 
             $.ajax({
                 type: 'POST',
@@ -1333,6 +1516,9 @@ $(document).ready(function () {
 
     // SERVICE TABLE UPDATE FORM - SUBMIT BUTTON
     $('#serviceSubmitButton-update').click(function () {
+        $('#service-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         var serviceId = $("#serviceServiceId-update").val();
         var updatedServiceName = $("#serviceName-update").val();
 
@@ -1402,6 +1588,9 @@ $(document).ready(function () {
 
     // SERVICE TABLE CREATE FORM - SUBMIT BUTTON
     $('#serviceSubmitButton-create').click(function () {
+        $('#service-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         var newServiceName = $("#serviceName-create").val();
 
         if (newServiceName == "") {
