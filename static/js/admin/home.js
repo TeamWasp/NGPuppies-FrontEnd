@@ -36,7 +36,17 @@ $(document).ready(function () {
         responsive: true
     });
 
-    $('#admin-create-form').validator()
+    // add form validators
+    $('#personal-details-update-form').validator();
+    $('#client-create-form').validator();
+    $('#client-update-form').validator();
+    $('#admin-create-form').validator();
+    $('#admin-update-form').validator();
+    $('#subscriber-create-form').validator();
+    $('#subscriber-update-form').validator();
+    $('#bill-create-form').validator();
+    $('#service-create-form').validator();
+    $('#service-update-form').validator();
 
     //set default values in columns when value is undefined/ empty
     var allUsersTable = $('#all-users-table').DataTable({
@@ -474,6 +484,9 @@ $(document).ready(function () {
 
     // CLIENT TABLE UPDATE FORM - CANCEL BUTTON
     $('#clientCancelButton-update').click(function () {
+        $('#client-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#clientsDetailsForm-update").hide();
     });
 
@@ -549,6 +562,9 @@ $(document).ready(function () {
 
     // CLIENT TABLE CREATE FORM - CANCEL BUTTON
     $('#clientCancelButton-create').click(function () {
+        $('#client-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#clientsDetailsForm-create").hide();
     });
 
@@ -664,7 +680,25 @@ $(document).ready(function () {
             $("#adminPassword1-update").val(password1);
             $("#adminPassword2-update").val(password2);
 
-            $(adminsForm).show();
+            if ($("#adminUserId-update").val().length > 0 &&
+            $("#adminUsername-update").val().length > 0 &&
+            $("#adminEmailAddress-update").val().length > 0) {
+            $("#adminSubmitButton-update").prop("disabled", false);
+        } else {
+            $("#adminSubmitButton-update").prop("disabled", true);
+        }
+
+        $("#adminUserId-update, #adminUsername-update, #adminEmailAddress-update, #adminPassword1-update, #adminPassword2-update").change(function () {
+            if ($("#adminUserId-update").val().length > 0 &&
+                $("#adminUsername-update").val().length > 0 &&
+                $("#adminEmailAddress-update").val().length > 0) {
+                $("#adminSubmitButton-update").prop("disabled", false);
+            } else {
+                $("#adminSubmitButton-update").prop("disabled", true);
+            }
+        });
+        $(adminsForm).show();
+        $('#admin-update-form').validator('update');
         }
     });
 
@@ -678,6 +712,9 @@ $(document).ready(function () {
 
     // ADMIN TABLE UPDATE FORM - CANCEL BUTTON
     $('#adminCancelButton-update').click(function () {
+        $('#admin-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#adminsDetailsForm-update").hide();
     });
 
@@ -761,6 +798,7 @@ $(document).ready(function () {
                 $("#adminSubmitButton-create").prop("disabled", true);
             }
         });
+        $("#admin-create-form").get(0).reset();
         $('#adminsDetailsForm-create').show();
         $('#admin-create-form').validator('update');
     });
@@ -768,6 +806,9 @@ $(document).ready(function () {
 
     // ADMIN TABLE CREATE FORM - CANCEL BUTTON
     $('#adminCancelButton-create').click(function () {
+        $('#admin-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#adminsDetailsForm-create").hide();
     });
 
@@ -792,7 +833,6 @@ $(document).ready(function () {
 
             success: function (data) {
 
-                $("#admin-create-form").get(0).reset();
                 $("#admins-table-rows").empty();
                 $("#adminsDetailsForm-create").hide();
                 $.ajax({
@@ -825,9 +865,6 @@ $(document).ready(function () {
                         console.log("Unsuccessful request");
                     }
                 });
-
-
-
             }
         });
     });
@@ -934,6 +971,9 @@ $(document).ready(function () {
 
     // SUBSCRIBER TABLE UPDATE FORM - CANCEL BUTTON
     $('#subscriberCancelButton-update').click(function () {
+        $('#subscriber-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#subscribersDetailsForm-update").hide();
     });
 
@@ -1042,6 +1082,9 @@ $(document).ready(function () {
 
     // SUBSCRIBER TABLE CREATE FORM - CANCEL BUTTON
     $('#subscriberCancelButton-create').click(function () {
+        $('#subscriber-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#subscribersDetailsForm-create").hide();
     });
 
@@ -1140,6 +1183,9 @@ $(document).ready(function () {
 
     // BILL TABLE CREATE FORM - CANCEL BUTTON
     $('#billCancelButton-create').click(function () {
+        $('#bill-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#billsDetailsForm-create").hide();
     });
 
@@ -1265,6 +1311,9 @@ $(document).ready(function () {
 
     // SERVICE TABLE UPDATE FORM - CANCEL BUTTON
     $('#serviceCancelButton-update').click(function () {
+        $('#service-update-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#servicesDetailsForm-update").hide();
     });
 
@@ -1331,6 +1380,9 @@ $(document).ready(function () {
 
     // SERVICE TABLE CREATE FORM - CANCEL BUTTON
     $('#serviceCancelButton-create').click(function () {
+        $('#service-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         $("#servicesDetailsForm-create").hide();
     });
 
