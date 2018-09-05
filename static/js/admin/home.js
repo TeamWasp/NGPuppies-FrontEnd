@@ -550,13 +550,27 @@ $(document).ready(function () {
     // CLIENT TABLE CREATE BUTTON
     $('#createClient').click(function () {
         $("#clientsDetailsForm-update").hide();
-        var data = [];
-        data.push(null);
-        var defaultVal = data[0];
-        $("#clientUsername-create").val(defaultVal);
-        $("#clientEik-create").val(defaultVal);
-        $("#clientPassword1-create").val(defaultVal);
-        $("#clientPassword2-create").val(defaultVal);
+
+        if ($("#clientUsername-create").val().length > 0 &&
+            $("#clientEik-create").val().length > 0 &&
+            $("#clientPassword1-create").val().length > 0 &&
+            $("#clientPassword2-create").val().length > 0) {
+            $("#clientSubmitButton-create").prop("disabled", false);
+        } else {
+            $("#clientSubmitButton-create").prop("disabled", true);
+        }
+        $("#clientUsername-create, #clientEik-create, #clientPassword1-create, #clientPassword2-create").change(function () {
+            if ($("#clientUsername-create").val().length > 0 &&
+                $("#clientEik-create").val().length > 0 &&
+                $("#clientPassword1-create").val().length > 0 &&
+                $("#clientPassword2-create").val().length > 0) {
+                $("#clientSubmitButton-create").prop("disabled", false);
+            } else {
+                $("#clientSubmitButton-create").prop("disabled", true);
+            }
+        });
+        $("#client-create-form").get(0).reset();
+        $('#client-create-form').validator('update');
         $('#clientsDetailsForm-create').show();
     });
 
@@ -697,8 +711,8 @@ $(document).ready(function () {
                 $("#adminSubmitButton-update").prop("disabled", true);
             }
         });
-        $(adminsForm).show();
         $('#admin-update-form').validator('update');
+        $(adminsForm).show();
         }
     });
 

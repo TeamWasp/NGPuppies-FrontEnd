@@ -242,14 +242,14 @@
                     <div class="panel-title">Client Details - Create Form</div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" data-toggle="validator" role="form">
+                    <form class="form-horizontal" data-toggle="validator" role="form" id="client-create-form">
                         <div class="form-group required">
                             <label for="clientUsername-create" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="clientUsername-create"
                                     minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
-                                <small id="clientUsername-create-help" class="form-text text-muted">Username should be
+                                <small id="clientUsername-create-help" class="help-block small">Username should be
                                     between 8 and 15 characters long.</small>
                             </div>
                         </div>
@@ -259,7 +259,7 @@
                                 <input class="input-md emailinput form-control" id="clientEik-create" minlength="10"
                                     maxlength="15" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px"
                                     type="text" />
-                                <small id="clientEik-create-help" class="form-text text-muted">EIK should be between 10
+                                <small id="clientEik-create-help" class="help-block small">EIK should be between 10
                                     and 15 digits long.</small>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                                 <input class="input-md textinput textInput form-control" id="clientPassword1-create"
                                     data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
-                                <div class="help-block small">Password should be at least 8 characters long.</div>
+                                <small id="clientPassword1-create-help" class="help-block small">Password should be at least 8 characters long.</small>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -285,8 +285,8 @@
                         <div class="form-group">
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input type="button" name="Enter" value="Enter" class="btn btn-primary btn btn-info" id="clientSubmitButton-create" />
-                                or <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary" id="clientCancelButton-create" />
+                                <button type="submit" id="clientSubmitButton-create" class="btn btn-primary">Submit</button>
+                                or <button type="submit" id="clientCancelButton-create" class="btn btn-primary">Cancel</button>
                             </div>
                         </div>
                     </form>
@@ -340,8 +340,8 @@
                                 <input class="input-md  textinput textInput form-control" id="adminUsername-update"
                                     minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
-                                <small id="adminUsername-update-help" class="form-text text-muted">Username should be
-                                    between 8 and 15 characters long.</small>
+                                <small id="adminUsername-update-help" class="help-block small">Username should be
+                                            between 8 and 15 characters long.</small>
                             </div>
                         </div>
                         <div class="form-group required">
