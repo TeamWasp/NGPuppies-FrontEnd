@@ -161,7 +161,7 @@ $(document).ready(function() {
         // crossOrigin: true,
         // crossDomain: true,
          type: 'GET',
-         url: "http://localhost:8080/api/client/bills/",
+         url: "http://localhost:8080/api/client/bills/history",
          contentType: "application/json",
          dataType: "json",
          success: function (data) {

@@ -7,7 +7,7 @@ $(document).ready(function () {
             .hide();
     });
 
-    $(document).ajaxError(function(){
+    $(document).ajaxError(function () {
 
         alert("Session Expired");
         window.location.replace("http://localhost:8081/login.html");
@@ -743,13 +743,24 @@ $(document).ready(function () {
     // ADMIN TABLE CREATE BUTTON
     $('#createAdmin').click(function () {
         $("#adminsDetailsForm-update").hide();
-        var data = [];
-        data.push(null);
-        var defaultVal = data[0];
-        $("#adminUsername-create").val(defaultVal);
-        $("#adminEmailAddress-create").val(defaultVal);
-        $("#adminPassword1-create").val(defaultVal);
-        $("#adminPassword2-create").val(defaultVal);
+        if ($("#adminUsername-create").val().length > 0 &&
+            $("#adminEmailAddress-create").val().length > 0 &&
+            $("#adminPassword1-create").val().length > 0 &&
+            $("#adminPassword2-create").val().length > 0) {
+            $("#adminSubmitButton-create").prop("disabled", false);
+        } else {
+            $("#adminSubmitButton-create").prop("disabled", true);
+        }
+        $("#adminUsername-create, #adminEmailAddress-create, #adminPassword1-create, #adminPassword2-create").change(function () {
+            if ($("#adminUsername-create").val().length > 0 &&
+                $("#adminEmailAddress-create").val().length > 0 &&
+                $("#adminPassword1-create").val().length > 0 &&
+                $("#adminPassword2-create").val().length > 0) {
+                $("#adminSubmitButton-create").prop("disabled", false);
+            } else {
+                $("#adminSubmitButton-create").prop("disabled", true);
+            }
+        });
         $('#adminsDetailsForm-create').show();
         $('#admin-create-form').validator('update');
     });
@@ -762,63 +773,63 @@ $(document).ready(function () {
 
     // ADMIN TABLE CREATE FORM - SUBMIT BUTTON
     $('#adminSubmitButton-create').click(function () {
+        $('#admin-create-form').submit(function (event) {
+            event.preventDefault();
+        });
         var newUsername = $("#adminUsername-create").val();
         var newEmailAddress = $("#adminEmailAddress-create").val();
         var newPassword = $("#adminPassword1-create").val();
-        var newPassword2 = $("#adminPassword2-create").val();
+        var newAdmin = new Admin(1, newUsername, newPassword, newEmailAddress);
 
-        if (newUsername == "" || newEmailAddress == "" || newPassword == "" || newPassword2 == "") {
-            alert("Please fill all fields in form to continue!");
-        } else if (newPassword != null && newPassword != newPassword2) {
-            alert("Password mismatch! Please check password before making changes!");
-        } else {
-            // set user id to 1, which used only for constructor building
-            var newAdmin = new Admin(1, newUsername, newPassword, newEmailAddress);
+        $.ajax({
+            type: 'POST',
+            xhrFields: {
+                withCredentials: false
+            },
+            url: 'http://localhost:8080/api/admin/admins/createAdmin',
+            contentType: "application/json",
+            data: JSON.stringify(newAdmin),
 
-            $.ajax({
-                type: 'POST',
-                xhrFields: {
-                    withCredentials: false
-                },
-                url: 'http://localhost:8080/api/admin/admins/createAdmin',
-                contentType: "application/json",
-                data: JSON.stringify(newAdmin),
+            success: function (data) {
 
-                success: function (data) {
-                    $("#admins-table-rows").empty();
-                    $("#adminsDetailsForm-create").hide();
-                    $.ajax({
-                        // crossOrigin: true,
-                        // crossDomain: true,
-                        type: 'GET',
-                        xhrFields: {
-                            withCredentials: false
-                        },
-                        url: "http://localhost:8080/api/admin/admins/",
-                        contentType: "application/json",
-                        dataType: "json",
-                        success: function (data) {
-                            adminsTable.clear();
+                $("#admin-create-form").get(0).reset();
+                $("#admins-table-rows").empty();
+                $("#adminsDetailsForm-create").hide();
+                $.ajax({
+                    // crossOrigin: true,
+                    // crossDomain: true,
+                    type: 'GET',
+                    xhrFields: {
+                        withCredentials: false
+                    },
+                    url: "http://localhost:8080/api/admin/admins/",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+                        adminsTable.clear();
 
-                            $.each(data, function (i) {
-                                var index = i + 1;
-                                adminsTable.row.add([
-                                    index,
-                                    data[i].userId,
-                                    data[i].username,
-                                    data[i].emailAddress,
-                                    data[i].enabled,
-                                    data[i].firstLogin
-                                ]).draw(false);
-                            });
-                        },
-                        error: function () {
-                            console.log("Unsuccessful request");
-                        }
-                    });
-                }
-            });
-        };
+
+                        $.each(data, function (i) {
+                            var index = i + 1;
+                            adminsTable.row.add([
+                                index,
+                                data[i].userId,
+                                data[i].username,
+                                data[i].emailAddress,
+                                data[i].enabled,
+                                data[i].firstLogin
+                            ]).draw(false);
+                        });
+                    },
+                    error: function () {
+                        console.log("Unsuccessful request");
+                    }
+                });
+
+
+
+            }
+        });
     });
 
     /*-------------------------------------------- ALL USERS TABLE ------------------------------------------------------*/
@@ -1017,7 +1028,7 @@ $(document).ready(function () {
                 var options = '';
                 $.each(data, function (i) {
                     options += '<option value="' + data[i].username + '">' + data[i].username + '</option>';
-                    
+
 
                 });
                 $('#subscriber-bank-select').html(options);
