@@ -6,6 +6,7 @@ $(document).ready(function() {
         ev.preventDefault();
         var username = $('#username').val();
         var password = $('#password').val();
+        localStorage.setItem("username", username);
 
         $.ajax({
             type: 'POST',

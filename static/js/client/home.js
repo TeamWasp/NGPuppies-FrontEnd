@@ -1,5 +1,19 @@
 $(document).ready(function() {
-  
+
+    // logout button
+    $("#logoutButton").click(function(ev) {
+
+      localStorage.clear();
+      window.location.replace("http://localhost:8081/login.html");
+    });
+
+    // set logged user and role in footer printRole
+    var printUsername = localStorage.getItem("username");
+    var printRole = localStorage.getItem("role");
+
+    $("#printUsername").html('<ins>' + printUsername + '</ins>');
+    $("#printRole").html('<ins>' + printRole + '</ins>');
+    
     /* DataTables https://datatables.net/manual/installation */
     var unpaidTable = $('#unpaid-bills-table').DataTable({
       responsive: true,
@@ -22,11 +36,19 @@ $(document).ready(function() {
     });
 
     
-  $.ajaxSetup({
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
-    }
-  });
+    $.ajaxSetup({
+      beforeSend: function(xhr) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' +  localStorage.getItem("token"));
+      }
+    });
+
+    $(document).ajaxError(function () {
+
+      alert("Session Expired");
+      window.location.replace("http://localhost:8081/login.html");
+
+
+    })
 
     $(function() {
       $('#subscribers-table-container, #bills-table-container, #top-10-subscribers-table-container, #paid-bills-table-container')

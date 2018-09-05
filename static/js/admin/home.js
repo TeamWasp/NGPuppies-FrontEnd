@@ -11,9 +11,16 @@ $(document).ready(function () {
 
         alert("Session Expired");
         window.location.replace("http://localhost:8081/login.html");
-
-
     })
+
+    // set logged user and role in footer printRole
+    var printUsername = localStorage.getItem("username");
+    var printRole = localStorage.getItem("role");
+
+    $("#printUsername").html('<ins>' + printUsername + '</ins>');
+    $("#printRole").html('<ins>' + printRole + '</ins>');
+
+    //options += '<option value="' + data[i].username + '">' + data[i].username + '</option>';
 
     /* DataTables https://datatables.net/manual/installation */
 
@@ -86,7 +93,8 @@ $(document).ready(function () {
             }
         ],
         stateSave: true,
-        responsive: true
+        responsive: true,
+        "bPaginate": true
     });
 
     // set ajax requests header to contain token
@@ -94,6 +102,13 @@ $(document).ready(function () {
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("token"));
         }
+    });
+
+    // logout button
+    $("#logoutButton").click(function(ev) {
+
+        localStorage.clear();
+        window.location.replace("http://localhost:8081/login.html");
     });
 
     /*-------------------------------------------- LOADING MODULE TABLES ------------------------------------------------------*/
