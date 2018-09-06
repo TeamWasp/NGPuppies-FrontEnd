@@ -105,9 +105,10 @@
                             <label for="personalDetailsUsername-update" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="personalDetailsUsername-update" minlength="8" maxlength="15"
-                                    name="username" placeholder="Choose your username" style="margin-bottom: 10px" type="text" />
-                                    <small id="personalDetailsUsername-update-help" class="help-block small">Username should be
+                                    name="username" pattern="^[A-Z_a-z]{8,15}$" placeholder="Choose your username" style="margin-bottom: 10px" type="text" />
+                                <small id="personalDetailsUsername-update-help" class="help-block small">Username should be
                                         between 8 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div id="div_id_email" class="form-group required">
@@ -194,20 +195,22 @@
                             <label for="clientUsername-update" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="clientUsername-update"
-                                    minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
+                                    minlength="8" maxlength="15" name="username" pattern="^[A-Z_a-z]{8,15}$" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="clientUsername-update-help" class="help-block small">Username should be
                                         between 8 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="clientEik-update" class="control-label col-md-4  requiredField"> EIK</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md emailinput form-control" id="clientEik-update" minlength="10"
-                                    and maxlength="15" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px"
+                                    and maxlength="15" name="id_eik" pattern="^[0-9]{10,15}$" placeholder="Enter eik" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="clientEik-update-help" class="help-block small">EIK should be between 10
                                     and 15 digits long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -257,20 +260,22 @@
                             <label for="clientUsername-create" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="clientUsername-create"
-                                    minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
+                                    minlength="8" maxlength="15" name="username" pattern="^[A-Z_a-z]{8,15}$" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="clientUsername-create-help" class="help-block small">Username should be
                                     between 8 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="clientEik-create" class="control-label col-md-4  requiredField"> EIK</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md emailinput form-control" id="clientEik-create" minlength="10"
-                                    maxlength="15" name="id_eik" placeholder="Enter eik" style="margin-bottom: 10px"
+                                    maxlength="15" name="id_eik" pattern="^[0-9]{10,15}$" placeholder="Enter eik" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="clientEik-create-help" class="help-block small">EIK should be between 10
                                     and 15 digits long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -348,10 +353,11 @@
                             <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="adminUsername-update"
-                                    minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
+                                    minlength="8" maxlength="15" name="username" pattern="^[A-Z_a-z]{8,15}$" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="adminUsername-update-help" class="help-block small">Username should be
                                             between 8 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -360,7 +366,7 @@
                                 <input class="input-md emailinput form-control" id="adminEmailAddress-update" name="id_eik"
                                     placeholder="Enter e-mail" data-error="E-mail invalid!" style="margin-bottom: 10px"
                                     type="email" />
-                                <div class="help-block with-errors"></div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -409,10 +415,11 @@
                             <label for="id_username" class="control-label col-md-4  requiredField"> Username</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="adminUsername-create"
-                                    minlength="8" maxlength="15" name="username" placeholder="Enter username" style="margin-bottom: 10px"
+                                    minlength="8" maxlength="15" name="username" pattern="^[A-Z_a-z]{8,15}$" placeholder="Enter username" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="adminUsername-create-help" class="help-block small">Username should be
                                     between 8 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -421,7 +428,7 @@
                                 <input class="input-md emailinput form-control" id="adminEmailAddress-create" name="id_eik"
                                     placeholder="Enter e-mail" data-error="E-mail invalid!" style="margin-bottom: 10px"
                                     type="email" />
-                                <div class="help-block with-errors"></div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -526,70 +533,77 @@
                             <label for="subscriberFirstName-update" class="control-label col-md-4  requiredField"> First name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberFirstName-update"
-                                    minlength="3" maxlength="10" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px"
+                                    minlength="3" maxlength="10" name="firstName" pattern="^[A-Za-z]{3,10}$" placeholder="Enter first name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberFirstName-update-help" class="help-block small">First name
                                     should be between 3 and 10 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberLastName-update" class="control-label col-md-4  requiredField"> Last name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberLastName-update"
-                                    minlength="4" maxlength="15" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="15" name="lastName" pattern="^[A-Za-z]{4,15}$" placeholder="Enter last name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberLastName-update-help" class="help-block small">Last name
                                     should be between 4 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberEgn-update" class="control-label col-md-4  requiredField"> EGN</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberEgn-update"
-                                    minlength="10" maxlength="10" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px"
+                                    minlength="10" maxlength="10" name="egn" pattern="^[0-9]{10,10}$" placeholder="Enter EGN" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberEgn-update-help" class="help-block small">EGN should be a
                                     10-digit number.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberCountry-update" class="control-label col-md-4  requiredField"> Country</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberCountry-update"
-                                    minlength="5" maxlength="20" name="country" placeholder="Enter country" style="margin-bottom: 10px"
+                                    minlength="5" maxlength="20" name="country" pattern="^[A-Za-z]{5,20}$" placeholder="Enter country" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberCountry-update-help" class="help-block small">Country should
                                     be between 5 and 20 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberCity-update" class="control-label col-md-4  requiredField"> City</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberCity-update"
-                                    minlength="4" maxlength="15" name="city" placeholder="Enter city" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="15" name="city" pattern="^[A-Za-z]{4,15}$" placeholder="Enter city" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberCity-update-help" class="help-block small">City should be
                                     between 4 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberZipCode-update" class="control-label col-md-4  requiredField"> Postal code</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberZipCode-update"
-                                    minlength="4" maxlength="4" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="4" name="zipCode" pattern="^[0-9]{4,4}$" placeholder="Enter postal code" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberZipCode-update-help" class="help-block small">Postal code
                                     should be a 4-digit number.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberStreet-update" class="control-label col-md-4  requiredField"> Street address</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberStreet-update"
-                                    minlength="10" maxlength="30" name="street" placeholder="Enter street address"
+                                    minlength="10" maxlength="30" name="street" pattern="^[A-Za-z0-9' ']{10,30}$" placeholder="Enter street address"
                                     style="margin-bottom: 10px" type="text" />
                                 <small id="subscriberStreet-update-help" class="help-block small">Street address
                                     should be between 10 and 30 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -629,80 +643,88 @@
                             <label for="subscriberPhoneNumber-create" class="control-label col-md-4  requiredField"> Phone numer </label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberPhoneNumber-create"
-                                    minlength="9" maxlength="15" name="phoneNumber" placeholder="Enter phone number"
+                                    minlength="9" maxlength="15" name="phoneNumber" pattern="^[0-9]{9,15}$" placeholder="Enter phone number"
                                     style="margin-bottom: 10px" type="text" />
                                 <small id="subscriberPhoneNumber-create-help" class="help-block small">Phone number
                                     should be between 9 and 15 digits long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberFirstName-create" class="control-label col-md-4  requiredField"> First name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberFirstName-create"
-                                    minlength="3" maxlength="10" name="firstName" placeholder="Enter first name" style="margin-bottom: 10px"
+                                    minlength="3" maxlength="10" name="firstName" pattern="^[A-Za-z]{3,10}$" placeholder="Enter first name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberFirstName-create-help" class="help-block small">First name
                                     should be between 3 and 10 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberLastName-create" class="control-label col-md-4  requiredField"> Last name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberLastName-create"
-                                    minlength="4" maxlength="15" name="lastName" placeholder="Enter last name" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="15" name="lastName" pattern="^[A-Za-z]{4,15}$" placeholder="Enter last name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberLastName-create-help" class="help-block small">Last name
                                     should be between 4 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberEgn-create" class="control-label col-md-4  requiredField"> EGN</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberEgn-create"
-                                    minlength="10" maxlength="10" name="egn" placeholder="Enter EGN" style="margin-bottom: 10px"
+                                    minlength="10" maxlength="10" name="egn" pattern="^[0-9]{10,10}$" placeholder="Enter EGN" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberEgn-create-help" class="help-block small">EGN should be a
                                     10-digit number.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberCountry-create" class="control-label col-md-4  requiredField"> Country</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberCountry-create"
-                                    minlength="5" maxlength="20" name="country" placeholder="Enter country" style="margin-bottom: 10px"
+                                    minlength="5" maxlength="20" name="country" pattern="^[A-Za-z]{5,20}$" placeholder="Enter country" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberCountry-create-help" class="help-block small">Country should
                                     be between 5 and 20 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberCity-create" class="control-label col-md-4  requiredField"> City</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberCity-create"
-                                    minlength="4" maxlength="15" name="city" placeholder="Enter city" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="15" name="city" pattern="^[A-Za-z]{4,15}$" placeholder="Enter city" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberCity-create-help" class="help-block small">City should be
                                     between 4 and 15 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberZipCode-create" class="control-label col-md-4  requiredField"> Postal code</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberZipCode-create"
-                                    minlength="4" maxlength="4" name="zipCode" placeholder="Enter postal code" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="4" name="zipCode" pattern="^[0-9]{4,4}$" placeholder="Enter postal code" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="subscriberZipCode-create-help" class="help-block small">Postal code
                                     should be a 4-digit number.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
                             <label for="subscriberStreet-create" class="control-label col-md-4  requiredField"> Street address</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="subscriberStreet-create"
-                                    minlength="10" maxlength="30" name="street" placeholder="Enter street address"
+                                    minlength="10" maxlength="30" name="street" pattern="^[A-Za-z0-9' ']{10,30}$" placeholder="Enter street address"
                                     style="margin-bottom: 10px" type="text" />
                                 <small id="subscriberStreet-create-help" class="help-block small">Street address
                                     should be between 10 and 30 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <!-- <div class="form-group required">
@@ -821,10 +843,11 @@
                             <label for="billAmount" class="control-label col-md-4  requiredField"> Amount</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="billAmount-create"
-                                    maxlength="30" name="amount" placeholder="Enter amount" style="margin-bottom: 10px"
+                                    maxlength="30" name="amount" pattern="^[0-9]+[\.]?+[0-9]+$" placeholder="Enter amount" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="billAmount-create-help" class="help-block small">Amount should be in
                                     original currency.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -889,10 +912,11 @@
                             <label for="serviceName-create" class="control-label col-md-4  requiredField"> Service name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="serviceName-create"
-                                    minlength="4" maxlength="10" maxlength="4" name="name" placeholder="Enter service name" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="10" maxlength="4" name="name" pattern="^[A-Za-z]{4,10}$" placeholder="Enter service name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="serviceName-create-help" class="help-block small">Service name should be
                                     between 4 and 10 digits long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -930,10 +954,11 @@
                             <label for="serviceName-update" class="control-label col-md-4  requiredField"> Service name</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md  textinput textInput form-control" id="serviceName-update"
-                                    minlength="4" maxlength="10" name="name" placeholder="Enter service name" style="margin-bottom: 10px"
+                                    minlength="4" maxlength="10" name="name" pattern="^[A-Za-z]{4,10}$" placeholder="Enter service name" style="margin-bottom: 10px"
                                     type="text" />
                                 <small id="serviceName-update-help" class="help-block small">Service name should be
                                    between 4 and 10 digits long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group">
