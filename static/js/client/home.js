@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    // redirect when admin is trying to access user site via url
+    if (localStorage.getItem("role") == "ROLE_ADMIN") {
+      window.location.replace("http://localhost:8081/error/access-denied.html");
+    }
     // logout button
     $("#logoutButton").click(function(ev) {
 
