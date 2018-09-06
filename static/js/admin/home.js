@@ -93,8 +93,7 @@ $(document).ready(function () {
             }
         ],
         stateSave: true,
-        responsive: true,
-        "bPaginate": true
+        responsive: true
     });
 
     // set ajax requests header to contain token
@@ -1133,53 +1132,82 @@ $(document).ready(function () {
         var updatedStreet = $("#subscriberStreet-update").val();
         var updatedBank = $("#subscriberBank-update").val();
 
-        var updateSubscriberDto = new SubscriberDto(updatedPhoneNumber, updatedFirstName, updatedLastName, updatedEgn, updatedCountry, updatedCity, updatedZipCode, updatedStreet, updatedBank);
-
+        // check if entered bank on subscriber update exists; if not, alert and do nothing;
+        var bankFoundInDb = false;
         $.ajax({
-            type: 'PUT',
+            // crossOrigin: true,
+            // crossDomain: true,
+            type: 'GET',
             xhrFields: {
                 withCredentials: false
             },
-            url: 'http://localhost:8080/api/admin/subscribers/updateSubscriber/' + updatedPhoneNumber,
+            url: "http://localhost:8080/api/admin/clients/",
             contentType: "application/json",
-            data: JSON.stringify(updateSubscriberDto),
-
-            success: function () {
-                $("#subscribers-table-rows").empty();
-                $("#subscribersDetailsForm-update").hide();
-                $.ajax({
-                    // crossOrigin: true,
-                    // crossDomain: true,
-                    type: 'GET',
-                    xhrFields: {
-                        withCredentials: false
-                    },
-                    url: "http://localhost:8080/api/admin/subscribers/",
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function (data) {
-                        subscribersTable.clear();
-
-                        $.each(data, function (i) {
-                            var index = i + 1;
-                            subscribersTable.row.add([
-                                index,
-                                data[i].phoneNumber,
-                                data[i].firstName,
-                                data[i].lastName,
-                                data[i].egn,
-                                data[i].address.country,
-                                data[i].address.city,
-                                data[i].address.zipCode,
-                                data[i].address.street,
-                                data[i].bank.username
-                            ]).draw(false);
-                        });
-                    },
-                    error: function () {
-                        console.log("Unsuccessful request");
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i) {
+                    if(updatedBank == data[i].username) {
+                        bankFoundInDb = true;
+                        return false;
                     }
                 });
+
+                if (bankFoundInDb == false) {
+                    alert("No bank with this name exist! Please change bank's name to continue!");
+                } else {
+                    var updateSubscriberDto = new SubscriberDto(updatedPhoneNumber, updatedFirstName, updatedLastName, updatedEgn, updatedCountry, updatedCity, updatedZipCode, updatedStreet, updatedBank);
+
+                    $.ajax({
+                        type: 'PUT',
+                        xhrFields: {
+                            withCredentials: false
+                        },
+                        url: 'http://localhost:8080/api/admin/subscribers/updateSubscriber/' + updatedPhoneNumber,
+                        contentType: "application/json",
+                        data: JSON.stringify(updateSubscriberDto),
+
+                        success: function () {
+                            $("#subscribers-table-rows").empty();
+                            $("#subscribersDetailsForm-update").hide();
+                            $.ajax({
+                                // crossOrigin: true,
+                                // crossDomain: true,
+                                type: 'GET',
+                                xhrFields: {
+                                    withCredentials: false
+                                },
+                                url: "http://localhost:8080/api/admin/subscribers/",
+                                contentType: "application/json",
+                                dataType: "json",
+                                success: function (data) {
+                                    subscribersTable.clear();
+
+                                    $.each(data, function (i) {
+                                        var index = i + 1;
+                                        subscribersTable.row.add([
+                                            index,
+                                            data[i].phoneNumber,
+                                            data[i].firstName,
+                                            data[i].lastName,
+                                            data[i].egn,
+                                            data[i].address.country,
+                                            data[i].address.city,
+                                            data[i].address.zipCode,
+                                            data[i].address.street,
+                                            data[i].bank.username
+                                        ]).draw(false);
+                                    });
+                                },
+                                error: function () {
+                                    console.log("Unsuccessful request");
+                                }
+                            });
+                        }
+                    });
+                }
+            },
+            error: function () {
+                console.log("Unsuccessful request");
             }
         });
     });
@@ -1273,7 +1301,7 @@ $(document).ready(function () {
             alert("Please fill all fields in form to continue!");
         } else {
             var newSubscriberDto = new SubscriberDto(newPhoneNumber, newFirstName, newLastName, newEgn, newCountry, newCity, newZipCode, newStreet, newBank);
-
+            console.log(newSubscriberDto);
             $.ajax({
                 type: 'POST',
                 xhrFields: {
