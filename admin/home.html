@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.0/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.4.0/r-2.2.2/rg-1.0.3/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" />
 
+    <!-- Custom styles for sticky footer (Bootstrap) -->
+    <link href="../static/css/sticky-footer.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="../static/css/admin/home.css" rel="stylesheet">
 
@@ -926,19 +929,14 @@
         </div>
     </div>
     </div>
-    <div id="footer" class="container marketing fixed-bottom">
-        <div>
-            <div>
+    <footer class="footer" id="footer">
+        <div class="container" id="footer-container">
                 Logged user: <span id="printUsername"></span>
                 Role: <span id="printRole"></span>
-            </div>
-            <!-- Footer -->
-            <footer>
-                <p class="float-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2018 NGPuppies</p>
-            </footer>
+                <p class="float-right">&copy; 2018 NGPuppies</p>
         </div>
-    </div>
+    </footer>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

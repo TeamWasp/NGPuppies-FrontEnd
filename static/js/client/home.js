@@ -135,10 +135,6 @@ $(document).ready(function() {
          }
      });
 
-
-
-
-
       ev.preventDefault;
       $('#subscribers-table-container').hide();
       $('#paid-bills-table-container').hide();

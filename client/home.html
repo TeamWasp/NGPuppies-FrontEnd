@@ -14,11 +14,13 @@
 
     <!-- DataTables https://datatables.net/manual/installation -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"/>
+    
+    <!-- Custom styles for sticky footer (Bootstrap) -->
+    <link href="../static/css/sticky-footer.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../static/css/client/home.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"/>
 
     <title>NG Puppies - Client home page</title>
 </head>
@@ -156,19 +158,13 @@
            
         </div>      
 
-    <div id="footer" class="container marketing fixed-bottom">
-        <div>
-            <div>
-                Logged user: <span id="printUsername"></span>
-                Role: <span id="printRole"></span>
+        <footer class="footer" id="footer">
+            <div class="container" id="footer-container">
+                    Logged user: <span id="printUsername"></span>
+                    Role: <span id="printRole"></span>
+                    <p class="float-right">&copy; 2018 NGPuppies</p>
             </div>
-            <!-- Footer -->
-            <footer>
-                <p class="float-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2018 NGPuppies</p>
-            </footer>
-        </div>
-    </div>
+        </footer>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

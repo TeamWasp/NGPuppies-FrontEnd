@@ -118,7 +118,7 @@ $(document).ready(function () {
     /*-------------------------------------------- LOADING MODULE TABLES ------------------------------------------------------*/
     $("#personalDetailsButton").click(function (ev) {
         ev.preventDefault;
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
 
         var username = localStorage.getItem("username");
 
@@ -172,7 +172,7 @@ $(document).ready(function () {
     $("#clientsButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
         $("#clients-table-container").show();
 
         $("#clients-table-rows").empty();
@@ -209,7 +209,7 @@ $(document).ready(function () {
     $("#adminsButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
         $("#admins-table-container").show();
 
         $("#admins-table-rows").empty();
@@ -248,7 +248,7 @@ $(document).ready(function () {
     $("#allUsersButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
 
         $("#all-users-table-rows").empty();
         $.ajax({
@@ -290,7 +290,7 @@ $(document).ready(function () {
     $("#subscribersButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
         $('#subscribers-table-container').show();
 
         $("#subscribers-table-rows").empty();
@@ -332,7 +332,7 @@ $(document).ready(function () {
     $("#billsButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
         $('#bills-table-container').show();
 
         $("#bills-table-rows").empty();
@@ -372,7 +372,7 @@ $(document).ready(function () {
     $("#servicesButton").click(function (ev) {
         ev.preventDefault;
 
-        $(".container").not("#footer").hide();
+        $(".container").not("#footer, #footer-container").hide();
         $('#services-table-container').show();
 
         $("#services-table-rows").empty();
