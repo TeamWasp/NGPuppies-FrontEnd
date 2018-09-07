@@ -44,46 +44,6 @@
             </button>
         </div>
     </nav>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <h1 class="navbar-brand m-1 h1"><span>NG</span> Puppies - Admin Module</h1>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul id="menu" class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <button id="personalDetailsButton" class="btn m-1 btn-primary">Personal Details <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="clientsButton" class="btn m-1 btn-secondary">Clients <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="adminsButton" class="btn m-1 btn-secondary">Admins <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="allUsersButton" class="btn m-1 btn-secondary">All Users <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="subscribersButton" class="btn m-1 btn-secondary">Subscribers <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="billsButton" class="btn m-1 btn-secondary">Bills <span class="sr-only"></span></button>
-                </li>
-                <li class="nav-item active">
-                    <button id="servicesButton" class="btn m-1 btn-secondary">Services <span class="sr-only"></span></button>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                    <button id="logoutButton" class="btn btn-md m-1 btn-danger">
-                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
 
     <!-- Personal details form -->
     <div id="personalDetailsForm" class="container">
@@ -124,9 +84,10 @@
                             <label for="personalDetailsPassword1-update" class="control-label col-md-4  requiredField">Password</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md textinput textInput form-control" id="personalDetailsPassword1-update"
-                                    data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
+                                    data-minlength="8" name="password1" pattern="^[\S]{8,}$" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
                                 <div class="help-block small">Password should be at least 8 characters long.</div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div id="div_id_password2" class="form-group required">
@@ -217,9 +178,10 @@
                             <label for="clientPassword1-update" class="control-label col-md-4  requiredField">Password</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md textinput textInput form-control" id="clientPassword1-update"
-                                    data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
+                                    data-minlength="8" name="password1" pattern="^[\S]{8,}$" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
                                 <div class="help-block small">Password should be at least 8 characters long.</div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -282,9 +244,10 @@
                             <label for="clientPassword1-create" class="control-label col-md-4  requiredField">Password</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md textinput textInput form-control" id="clientPassword1-create"
-                                    data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
+                                    data-minlength="8" name="password1" pattern="^[\S]{8,}$" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
                                 <small id="clientPassword1-create-help" class="help-block small">Password should be at least 8 characters long.</small>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -373,9 +336,10 @@
                             <label for="adminPassword1-update" class="control-label col-md-4  requiredField">Password</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md textinput textInput form-control" id="adminPassword1-update"
-                                    data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
+                                    data-minlength="8" name="password1" pattern="^[\S]{8,}$" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
                                 <div class="help-block small">Password should be at least 8 characters long.</div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -435,9 +399,10 @@
                             <label for="adminPassword1-create" class="control-label col-md-4  requiredField">Password</label>
                             <div class="controls col-md-8 ">
                                 <input class="input-md textinput textInput form-control" id="adminPassword1-create"
-                                    data-minlength="8" name="password1" placeholder="Create a password" style="margin-bottom: 10px"
+                                    data-minlength="8" name="password1" pattern="^[\S]{8,}$" placeholder="Create a password" style="margin-bottom: 10px"
                                     type="password" />
                                 <div class="help-block small">Password should be at least 8 characters long.</div>
+                                <div class="help-block with-errors small"></div>
                             </div>
                         </div>
                         <div class="form-group required">
@@ -727,10 +692,6 @@
                                 <div class="help-block with-errors small"></div>
                             </div>
                         </div>
-                        <!-- <div class="form-group required">
-                                <label for="subscriber-bank-select" class="control-label col-md-4  requiredField">Bank</label>    
-                                <select id="subscriber-bank-select" class="form-control select-form mr-0"></select>
-                                </div> -->
                         <div class="form-group required">
                                 <label for="subscriber-bank-select" class="control-label col-md-4  requiredField">Bank</label> 
                                 <div class="controls col-md-8 ">
@@ -783,46 +744,18 @@
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" id="bill-create-form">
-                        <!-- <div class="form-group required">
-                                <label for="bill-service-select" class="control-label col-md-4  requiredField">Service</label>    
-                                <select id="bill-service-select" class="form-control select-form mr-0"></select>
-                        </div> -->
                         <div class="form-group required">
                                 <label for="bill-service-select" class="control-label col-md-4  requiredField">Service</label> 
                                 <div class="controls col-md-8 ">
                                     <select id="bill-service-select" class="form-control container-fluid select-form mr-0"></select>
                                 </div>
                         </div>
-                        <!-- <div class="form-group required">
-                            <label for="billServiceId-create" class="control-label col-md-4  requiredField"> Service id </label>
-                            <div class="controls col-md-8 ">
-                                <input class="input-md  textinput textInput form-control" id="billServiceId-create"
-                                    minlength="1" maxlength="5" name="service" placeholder="Enter service id" style="margin-bottom: 10px"
-                                    type="text" />
-                                <small id="billServiceId-create-help" class="help-block small">Service id should be
-                                    a digit #.</small>
-                            </div>
-                        </div> -->
-                        <!-- <div class="form-group required">
-                                <label for="bill-subscriber-select" class="control-label col-md-4  requiredField">Phone #</label>    
-                                <select id="bill-subscriber-select" class="form-control select-form mr-0"></select>
-                        </div> -->
                         <div class="form-group required">
                                 <label for="bill-subscriber-select" class="control-label col-md-4  requiredField">Phone #</label> 
                                 <div class="controls col-md-8 ">
                                     <select id="bill-subscriber-select" class="form-control container-fluid select-form mr-0"></select>
                                 </div>
                         </div>
-                        <!-- <div class="form-group required">
-                            <label for="id_username" class="control-label col-md-4  requiredField"> Phone #</label>
-                            <div class="controls col-md-8 ">
-                                <input class="input-md  textinput textInput form-control" id="billSubscriberPhoneNumber-create"
-                                    minlength="8" maxlength="15" name="phoneNumber" placeholder="Enter phone number"
-                                    style="margin-bottom: 10px" type="text" />
-                                <small id="billSubscriberPhoneNumber-create-help" class="form-text text-muted">Phone
-                                    number should be between 8 and 15 digits long.</small>
-                            </div>
-                        </div> -->
                         <div class="form-group required">
                             <label for="billStartDate" class="control-label col-md-4  requiredField"> Start date</label>
                             <div class="controls col-md-8 ">
@@ -856,16 +789,6 @@
                                     <select id="bill-currency-select" class="form-control container-fluid select-form mr-0"></select>
                                 </div>
                         </div>
-                        <!-- <div class="form-group required">
-                            <label for="billCurrency" class="control-label col-md-4  requiredField"> Currency</label>
-                            <div class="controls col-md-8 ">
-                                <input class="input-md  textinput textInput form-control" id="billCurrency-create"
-                                    minlength="3" maxlength="3" name="currency" placeholder="Enter currency" style="margin-bottom: 10px"
-                                    type="text" />
-                                <small id="billCurrency-create-help" class="form-text text-muted">Currency should be a
-                                    3-digit code and be present in currencies table.</small>
-                            </div>
-                        </div> -->
                         <div class="form-group">
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
@@ -997,7 +920,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.0/b-1.5.2/b-colvis-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.4.0/r-2.2.2/rg-1.0.3/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+    <!-- Validator of Bootstrap forms -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+    
     <!-- Local js-->
     <script src="../static/js/admin/home.js"></script>
 </body>

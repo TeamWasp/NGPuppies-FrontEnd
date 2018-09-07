@@ -1,7 +1,7 @@
 $(document).ready(function () {
-
-    // redirect when user is trying to access admin site via url
-    if (localStorage.getItem("role") == "ROLE_USER") {
+    
+    // redirect when user is trying to access admin site via url or if it is first login of admin
+    if (localStorage.getItem("role") != "ROLE_ADMIN" || localStorage.getItem("firstLogin") == "true") {
         window.location.replace("http://localhost:8081/error/access-denied.html");
     }
     
