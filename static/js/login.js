@@ -21,8 +21,8 @@ $(document).ready(function() {
             data: JSON.stringify({
                 "username": username,
                 "password": password
-            })
-        }).done(function (body) {
+            }),
+        success: function (body) {
             auth = body["token"];
             role = body["role"];
             firstLogin = body["firstLogin"];
@@ -41,35 +41,14 @@ $(document).ready(function() {
                     alert("Welcome to NG Puppies. Logged in as " + role);
                     window.location.href = "http://localhost:8081/admin/home.html";
                 }
-
-                /* $.ajax({
-                    type: 'GET',
-                    xhrFields: {
-                        withCredentials: false
-                    },
-                    beforeSend: function(request) {
-                        request.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem("token"));
-                        console.log(localStorage.getItem("token"));
-                      },
-                    url: "http://localhost:8080/api/admin/admins?username=" + localStorage.getItem("username"),
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function() {
-                        alert("Welcome to NG Puppies. Logged in as " + role);
-                        window.location.href = "http://localhost:8081/admin/home.html";
-                    },
-                    error: function (data) {
-                        console.log(data);
-                        alert("This is your first login. Please reset your password to continue!");
-                        window.location.href = "http://localhost:8081/admin/reset.html";
-                    }
-                }); */
             } else {
                 alert("Welcome to NG Puppies. Logged in as " + role);
                 window.location.href = "http://localhost:8081/client/home.html";
             }
+        },
+        error: function () {
+            alert("Bad credentials! Please try again!")
+        }
         });
-
-        
     });
 });
