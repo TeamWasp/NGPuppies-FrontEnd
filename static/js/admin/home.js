@@ -1829,11 +1829,12 @@ $(document).ready(function () {
 
         var userId = $("#personalDetailsUserId-update").val();
         var updatedUsername = $("#personalDetailsUsername-update").val();
-        var updatedEmailAddress = $("#personalDetailsEmailAddress-update").val();
+        var updatedEmailAddress = $("#personalDetailsEmail-update").val();
         var updatedPassword = $("#personalDetailsPassword1-update").val();
         var updatedPassword2 = $("#personalDetailsPassword2-update").val();
 
         var updatedAdminPD = new Admin(userId, updatedUsername, updatedPassword, updatedEmailAddress);
+        console.log(updatedAdminPD);
 
         $.ajax({
             type: 'PUT',
